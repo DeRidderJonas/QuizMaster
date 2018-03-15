@@ -1,0 +1,15 @@
+img{
+  height: 5vw;
+}
+
+img+h1{
+  display: inline;
+}
+
+.quiz{
+  border: 1px solid black;
+}
+
+.continue{
+  height: 3vw;
+}

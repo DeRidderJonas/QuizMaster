@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="Author" content="Jonas De Ridder"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/shared.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/makeQuiz.css">
+    <title>Make your own quiz!</title>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Popular</a>
+    <a href="index.html">Interests</a>
+    <a href="makeQuiz.html">Make Quiz</a>
+    <a href="profile.html">Profile</a>
+  </nav>
+  <main>
+    <form action="/makeQuiz" method="post">
+      <label for="quizTitle">Quiz title:</label>
+      <input type="text" name="quizTitle" id="quizTitle">
+      <input type="number" name="amountOfQuestions" hidden>
+      <fieldset id="questions">
+      </fieldset>
+      <a href="#" id="addQuestion">Add another question</a>
+      <input type="submit" name="submit" value="Submit Quiz">
+    </form>
+  </main>
+  <script src="../assets/js/jquery-3.1.1.min.js"></script>
+  <script src="assets/js/makeQuiz.js"></script>
+</body>
+</html>

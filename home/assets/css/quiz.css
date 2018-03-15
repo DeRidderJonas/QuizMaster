@@ -1,0 +1,23 @@
+#question{
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+img{
+  width: 88%;
+  max-height: 8vw;
+  overflow: hidden;
+}
+
+.answers{
+  display: table;
+}
+
+.answers article{
+  display: table-row;
+}
+
+.answers article input{
+  display: table-cell;
+  width: 33vw;
+}
