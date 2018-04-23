@@ -34,5 +34,6 @@ input{
 @media only screen and (max-width: 600px) {
   form{
     width: 100vw;
+    background-color: white;
   }
 }

@@ -1,0 +1,20 @@
+#averageScore{
+  font-size: 65%
+}
+
+.suggestions section{
+  display: table;
+}
+
+.suggestions section section{
+  display: table-row;
+}
+
+.suggestion{
+  display: table-cell;
+}
+
+.suggestion p{
+  display: inline;
+  width: 45vw;
+}
