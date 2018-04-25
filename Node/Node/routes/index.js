@@ -15,7 +15,10 @@ const Q = {
     insertQuestion: "insert into questions(quizID,rightAnswer, wrongAnswer1, wrongAnswer2,wrongAnswer3, question) values(?,?,?,?,?,?)",
     getLastQuizID: "select * from quiz order by quizID desc limit 1",
     getAnyQuizesUsingIds: "select * from quiz where quizID in (?)",
-    getQuestionsForQuiz: "select * from questions where quizID = ?"
+    getQuestionsForQuiz: "select * from questions where quizID = ?",
+    setUserScore: "insert into userScores (userID, quizID, score) values(?,?,?)",
+    getUserSCore: "select * from userScores where userID = ? and quizID = ?",
+    updateUserScore: "update userSCores set score = ? where userID = ? and quizID = ?"
 };
 
 /* GET home page. */
@@ -84,8 +87,42 @@ router.post('/getQuestionsForQuiz', function (req, res) {
     });
 });
 
-router.post('/handleAnswer', function (req, res) {
+function updateUserScore(userID, quizID, score) {
+    connection.query(Q.getUserSCore, [userID, quizID], function (err, res) {
+        console.log("got the score");
+        if(err)console.error(err);
+        console.log(res.length);
+        if (res.length !== 0 && score > res[0].score){
+            connection.query(Q.updateUserScore,[score, userID, quizID],function (err, res) {
+                console.log("updated score");
+                if(err)console.error(err)
+            })
+        }else{
+            connection.query(Q.setUserScore, [userID, quizID, score], function (err, res) {
+                console.log("set score");
+                if(err)console.error(err);
+            })
+        }
+    })
+}
+
+router.post('/handleAnswers', function (req, res) {
     console.log(req.body);
+    let userID = req.body.userID;
+    let quizID = req.body.quizID;
+    let answers = JSON.parse(req.body.answers);
+    let score = 0;
+    let rightAnswers = [];
+    connection.query(Q.getQuestionsForQuiz, [quizID], function (questionError, questionRows) {
+        questionRows.forEach(q => {
+            rightAnswers.push(q.rightAnswer);
+        });
+        for (let i =0; i < rightAnswers.length; i++){
+            if (rightAnswers[i] === answers[i]) score++;
+        }
+        updateUserScore(userID, quizID, score);
+    });
+    res.redirect("/home/quizEnd.html");
 });
 
 module.exports = router;

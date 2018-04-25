@@ -1,12 +1,31 @@
 let questions;
 let currentQuestion = 0;
 let answers = [];
+let quizID = 4;
+let userID = 1;
 function handleFormSubmit(e) {
   e.preventDefault();
-  var answerId = e.target.name.substring(6,e.target.name.length);
-  console.log(answerId);
+  var answer = e.target.value;
+  console.log(answer);
+  answers.push(answer);
   currentQuestion++;
-  fillInNewQuestion(questions[currentQuestion]);
+  if(currentQuestion < questions.length){
+      fillInNewQuestion(questions[currentQuestion]);
+  }else{
+      if (userID !== null){
+          $.ajax({
+              type: "POST",
+              url: '/handleAnswers',
+              data: {userID: userID, quizID: quizID, answers: JSON.stringify(answers)}
+          }).done(function(data, textStatus, jqXHR){
+              //redirect to quizEnd.html
+          }).fail(function(jqXHR, textStatus, errorThrown){
+              console.error(errorThrown);
+          });
+      }
+
+  }
+
 }
 
 function fillInNewQuestion(questionData){
@@ -33,6 +52,6 @@ function getQuestions(quizID){
 }
 
 $(document).ready(function(){
-    getQuestions(4);
+    getQuestions(quizID);
     $('input[type=button]').on('click', handleFormSubmit);
 });
