@@ -17,14 +17,14 @@
     <a href="profile.html">Profile</a>
   </nav>
   <main>
-    <form action="/makeQuiz" method="post">
+    <form action="http://localhost:3000/makeQuiz" method="post" id="quizForm">
       <label for="quizTitle">Quiz title:</label>
       <input type="text" name="quizTitle" id="quizTitle">
       <input type="number" name="amountOfQuestions" hidden>
       <fieldset id="questions">
       </fieldset>
       <a href="#" id="addQuestion">Add another question</a>
-      <input type="submit" name="submit" value="Submit Quiz">
+      <input type="button" id="submitButton" value="Submit Quiz">
     </form>
   </main>
   <script src="../assets/js/jquery-3.1.1.min.js"></script>

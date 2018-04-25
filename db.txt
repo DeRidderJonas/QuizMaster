@@ -1,0 +1,21 @@
+CREATE DATABASE `quizmaster` /*!40100 DEFAULT CHARACTER SET latin1 */;
+CREATE TABLE `questions` (
+  `questionID` int(11) NOT NULL AUTO_INCREMENT,
+  `quizID` int(11) NOT NULL,
+  `rightAnswer` varchar(50) NOT NULL,
+  `wrongAnswer1` varchar(50) NOT NULL,
+  `wrongAnswer2` varchar(50) NOT NULL,
+  `wrongAnswer3` varchar(50) NOT NULL,
+  `question` varchar(50) NOT NULL,
+  PRIMARY KEY (`questionID`),
+  KEY `fk_quizID_idx` (`quizID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE `quiz` (
+  `quizID` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  `author` varchar(45) DEFAULT NULL,
+  `avgScore` int(11) DEFAULT NULL,
+  `tags` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`quizID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
