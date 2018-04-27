@@ -17,8 +17,10 @@ const Q = {
     getAnyQuizesUsingIds: "select * from quiz where quizID in (?)",
     getQuestionsForQuiz: "select * from questions where quizID = ?",
     setUserScore: "insert into userScores (userID, quizID, score) values(?,?,?)",
-    getUserSCore: "select * from userScores where userID = ? and quizID = ?",
-    updateUserScore: "update userSCores set score = ? where userID = ? and quizID = ?"
+    getUserSCoreForQuiz: "select * from userScores where userID = ? and quizID = ?",
+    updateUserScore: "update userSCores set score = ? where userID = ? and quizID = ?",
+    getUserScores: "select q.name as quizName, us.score as score from userscores us join quiz q on us.quizID = q.quizID where userID = ?",
+    getQuizzesCreatedByUser: "select name as quizName, avgScore, description, tags from quiz where authorID = ?"
 };
 
 /* GET home page. */
@@ -55,7 +57,6 @@ router.post('/makeQuiz', function (req, res, next) {
     let quiz = JSON.parse(quizJson);
     connection.query(Q.insertQuiz, [quiz.title, "", ""], function (err, result) {
         if(err){console.error(err)}
-        console.log(result);
         let id = result.insertId;
         if (id > -1){
             quiz.questions.forEach(q=>{
@@ -88,15 +89,16 @@ router.post('/getQuestionsForQuiz', function (req, res) {
 });
 
 function updateUserScore(userID, quizID, score) {
-    connection.query(Q.getUserSCore, [userID, quizID], function (err, res) {
+    connection.query(Q.getUserSCoreForQuiz, [userID, quizID], function (err, res) {
         console.log("got the score");
         if(err)console.error(err);
-        console.log(res.length);
-        if (res.length !== 0 && score > res[0].score){
-            connection.query(Q.updateUserScore,[score, userID, quizID],function (err, res) {
-                console.log("updated score");
-                if(err)console.error(err)
-            })
+        if (res.length !== 0){
+            if (score > res[0].score){
+                connection.query(Q.updateUserScore,[score, userID, quizID],function (err, res) {
+                    console.log("updated score");
+                    if(err)console.error(err)
+                })
+            }
         }else{
             connection.query(Q.setUserScore, [userID, quizID, score], function (err, res) {
                 console.log("set score");
@@ -123,6 +125,25 @@ router.post('/handleAnswers', function (req, res) {
         updateUserScore(userID, quizID, score);
     });
     res.redirect("/home/quizEnd.html");
+});
+
+router.post('/getUserScores', function (req, res) {
+     let userID = req.body.userID;
+     console.log(userID);
+     connection.query(Q.getUserScores, [userID], function (err, rows) {
+         if (err)console.error(err);
+         let completedQuizes = [];
+         rows.forEach(row=>{
+             completedQuizes.push({name: row.quizName, score: row.score})
+         });
+         connection.query(Q.getQuizzesCreatedByUser, [userID], function (err, rows) {
+             if(err)console.error(err);
+             console.log(rows);
+             let quizzesMade = [];
+             rows.forEach(row=>quizzesMade.push({name: row.quizName, avgScore: row.avgScore, description: row.description, tags: row.tags}));
+             res.json(JSON.stringify({completedQuizes: completedQuizes, quizzesMade: quizzesMade}));
+         })
+     })
 });
 
 module.exports = router;
