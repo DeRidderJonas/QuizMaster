@@ -1,26 +1,40 @@
 
 function getQuizes(){
+    $('#quizzes').html("");
     $.ajax({
         url : '/getAnyQuizes',
         type: "get"
     }).done(function (data) {
-        $('#quizzes').html("");
         data = JSON.parse(data);
-        console.log(data);
-        data.forEach(quiz =>{
-            console.log(quiz);
-            let html = `<section class="quiz">
+        FillInQuizzes(data);
+        if(db.dbAvailable()){
+            let addNewQuizzes = db.canAddMoreQuizzes();
+            if (addNewQuizzes){
+                data.forEach(quiz=>{
+                    db.addQuiz(quiz);
+                })
+            }
+        }
+    }).catch(function (){ //offline backup
+        if(db.dbAvailable()){
+            let backupQuizzes = db.getMultipleQuizzes();
+            FillInQuizzes(backupQuizzes);
+        }else{
+            $('#quizzes').html('No quizzes found, try again later');
+        }
+    })
+}
+
+function FillInQuizzes(quizzes) {
+    quizzes.forEach(quiz =>{
+        let html = `<section class="quiz">
                       <img src="assets/images/${quiz.imgUrl}" title="QuizIcon" alt="QuizIcon">
                       <h1>${quiz.title}</h1>
                       <p>${quiz.description}</p>
                       <a href="quiz.html?quiz=${quiz.id}" class="continue"><img src="assets/images/arrow.png"></a>
                     </section>`;
-            $('#quizzes').append(html);
-        });
-
-    }).catch(function (err){
-        console.log(err);
-    })
+        $('#quizzes').append(html);
+    });
 }
 
 $(document).ready(function(){

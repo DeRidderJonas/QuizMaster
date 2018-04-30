@@ -31,13 +31,11 @@ router.get('/', function(req, res, next) {
 router.get('/getAnyQuizes', function (req, res) {
     connection.query(Q.getLastQuizID, function (err, result) {
         let highestID = result[0].quizID;
-        let quizIDs = "";
+        let quizIDs = [];
         for (let i = 0; i < 5; i++){
-            quizIDs += Math.floor(Math.random() * highestID);
-            if (i < 4){
-                quizIDs += ",";
-            }
+            quizIDs.push(Math.floor(Math.random() * (highestID+1)));
         }
+        quizIDs = quizIDs.join(',');
         console.log(quizIDs);
         let query = `select * from quiz where quizID in (${quizIDs})`; //insecure AF
         connection.query(query, function (error, rows) {
