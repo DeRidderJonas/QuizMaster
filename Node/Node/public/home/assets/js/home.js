@@ -8,17 +8,21 @@ function getQuizes(){
         data = JSON.parse(data);
         FillInQuizzes(data);
         if(db.dbAvailable()){
-            let addNewQuizzes = db.canAddMoreQuizzes();
-            if (addNewQuizzes){
-                data.forEach(quiz=>{
-                    db.addQuiz(quiz);
-                })
-            }
+            // let addNewQuizzes = db.canAddMoreQuizzes();
+            // if (addNewQuizzes){
+            //     data.forEach(quiz=>{
+            //         db.addQuiz(quiz);
+            //     })
+            // }
+            db.canAddMoreQuizzes().then(function (roomAvailable) {
+                if(roomAvailable){
+                    data.forEach(quiz=>db.addQuiz(quiz))
+                }
+            })
         }
     }).catch(function (){ //offline backup
         if(db.dbAvailable()){
-            let backupQuizzes = db.getMultipleQuizzes();
-            FillInQuizzes(backupQuizzes);
+            db.getMultipleQuizzes().then(FillInQuizzes);
         }else{
             $('#quizzes').html('No quizzes found, try again later');
         }

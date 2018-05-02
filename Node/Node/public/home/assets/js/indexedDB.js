@@ -8,7 +8,7 @@ const db = (function () {
         console.log('indexed db recognised');
     }
 
-    const maxAmountQuizzesInIndexedDB = 3;
+    const maxAmountQuizzesInIndexedDB = 5;
 
     const quizDB = 'quizDB';
     const quizName = 'quiz';
@@ -32,6 +32,30 @@ const db = (function () {
         return db !== null;
     }
 
+    function promiseToGet(key){
+        return new Promise(function (s, f) {
+            let trans = db.transaction([quizName], 'readwrite');
+            let os = trans.objectStore(quizName);
+            let request = os.get(key);
+            request.onsuccess = function (e) {
+                s(e.target.result);
+            };
+            request.onerror = f;
+        })
+    }
+
+    function promiseToCount() {
+        return new Promise(function (s, f) {
+            let trans = db.transaction(quizName);
+            let os = trans.objectStore(quizName);
+            let request = os.count();
+            request.onsuccess = function (e) {
+                s(e.target.result);
+            };
+            request.onerror = f;
+        })
+    }
+
     function addQuiz(newQuiz){
         try {
             let trans = db.transaction([quizName], 'readwrite');
@@ -42,42 +66,31 @@ const db = (function () {
         }
     }
 
-    let quiz;
     function getQuiz(id){
         if (id > 0 && id < maxAmountQuizzesInIndexedDB){
-            let trans = db.transaction(quizName);
-            let os = trans.objectStore(quizName);
-            os.get(id).onsuccess = function (e) {
-                quiz = e.target.result;
-            };
-            return quiz;
+            return promiseToGet(id);
         }
+        return null;
     }
 
-    let quizzes = [];
+    function range(amount){
+        let numbers = [];
+        for(let i = 1; i < amount+1; i++){
+            numbers.push(i);
+        }
+        return numbers;
+    }
+
     function getMultipleQuizzes(){
-        quizzes = [];
-        for (let i=0; i < maxAmountQuizzesInIndexedDB; i++){
-            quizzes.push(getQuiz(i));
-        }
-        return quizzes;
-    }
-
-    let amount = 0;
-    function getAmountOfQuizzes(){
-        let trans = db.transaction(quizName);
-        let os = trans.objectStore(quizName);
-
-        os.count().onsuccess = function (e) {
-            amount = e.target.result;
-        };
-        return amount;
+        return Promise.all(range(maxAmountQuizzesInIndexedDB).map(getQuiz));
     }
 
     function canAddMoreQuizzes() {
-        return getAmountOfQuizzes() < maxAmountQuizzesInIndexedDB;
+        return promiseToCount().then(function (amount) {
+            return amount < maxAmountQuizzesInIndexedDB;
+        });
     }
-    return {addQuiz: addQuiz, getQuiz: getQuiz, getAmountOfQuizzes: getAmountOfQuizzes,
+    return {addQuiz: addQuiz, getQuiz: getQuiz, getAmountOfQuizzes: promiseToCount,
         canAddMoreQuizzes: canAddMoreQuizzes, getMultipleQuizzes:getMultipleQuizzes,
         dbAvailable:dbAvailable};
 })();
