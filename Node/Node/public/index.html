@@ -4,21 +4,43 @@
     <meta charset="UTF-8"/>
     <meta name="Author" content="Jonas De Ridder"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-    <link rel="icon" type="img/ico" href="assets/images/favIcon.png">
-    <title>Quiz Master</title>
+    <link rel="stylesheet" type="text/css" href="../assets/css/reset.css">
+    <link rel="icon" type="img/ico" href="../assets/images/favIcon.png">
+    <link rel="stylesheet" type="text/css" href="assets/css/shared.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/home.css">
+    <title>Choose a Quiz</title>
 </head>
 <body>
-  <h1>Quiz Master</h1>
-  <img href="#">
-  <form action="/doLogin">
-    <label for="username">Username</label>
-    <input type="text" name="username" id="username">
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password">
-    <input type="submit" value="Login" name="submit">
-  </form>
-  <a href="home/index.html">temp link</a>
-    <script src="assets/js/app.js"></script>
+<nav>
+    <a href="index.html?mode=popular">Popular</a>
+    <a href="index.html?mode=search">Search</a>
+    <a href="makeQuiz.html">Make Quiz</a>
+    <a href="stats.html">Profile</a>
+</nav>
+<main id="quizzes">
+    <section class="quiz">
+        <img src="assets/images/js.png" title="QuizIcon" alt="QuizIcon">
+        <h1>Javascript</h1>
+        <p>This quiz will ask you some shizzle on functions and shizzle in js</p>
+        <a href="quiz.html?quiz=INSERT" class="continue"><img src="assets/images/arrow.png"></a>
+    </section>
+    <section class="quiz">
+        <img src="assets/images/java.png" title="QuizIcon" alt="QuizIcon">
+        <h1>Java</h1>
+        <p>Questions about classes, interfaces, enums and Inheritance</p>
+        <a href="quiz.html?quiz=INSERT" class="continue"><img src="assets/images/arrow.png"></a>
+    </section>
+    <section class="quiz">
+        <img src="assets/images/php.png" title="QuizIcon" alt="QuizIcon">
+        <h1>PHP</h1>
+        <p>PHP, don't take this quiz... php sucks</p>
+        <a href="quiz.html?quiz=INSERT" class="continue"><img src="assets/images/arrow.png"></a>
+    </section>
+</main>
+<script src="../assets/js/jquery-3.1.1.min.js"></script>
+<script src="assets/js/getParameterByName.js"></script>
+<script src="assets/js/indexedDB.js"></script>
+<script src="assets/js/home.js"></script>
+<script src="assets/js/app.js"></script>
 </body>
 </html>
