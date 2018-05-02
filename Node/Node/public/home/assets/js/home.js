@@ -22,6 +22,7 @@ function getQuizes(){
         }
     }).catch(function (){ //offline backup
         if(db.dbAvailable()){
+            console.log("offline backup");
             db.getMultipleQuizzes().then(FillInQuizzes);
         }else{
             $('#quizzes').html('No quizzes found, try again later');

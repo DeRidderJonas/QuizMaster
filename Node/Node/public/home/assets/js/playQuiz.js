@@ -1,7 +1,7 @@
 let questions;
 let currentQuestion = 0;
 let answers = [];
-let quizID = 4;
+let quizID = 1;
 let userID = 1;
 function handleFormSubmit(e) {
   e.preventDefault();
@@ -30,10 +30,10 @@ function handleFormSubmit(e) {
 
 function fillInNewQuestion(questionData){
   $('#question').html(questionData.question);
-  $('input[name=answer1]').val(questionData.answer1);
-  $('input[name=answer2]').val(questionData.answer2);
-  $('input[name=answer3]').val(questionData.answer3);
-  $('input[name=answer4]').val(questionData.answer4);
+  $('input[name=answer1]').val(questionData.answer0);
+  $('input[name=answer2]').val(questionData.answer1);
+  $('input[name=answer3]').val(questionData.answer2);
+  $('input[name=answer4]').val(questionData.answer3);
 }
 
 function getQuestions(quizID){

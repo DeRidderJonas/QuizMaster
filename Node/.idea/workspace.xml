@@ -21,13 +21,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="home.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Node/public/home/assets/js/home.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="20" column="14" lean-forward="true" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
+            <state relative-caret-position="504">
+              <caret line="24" column="42" lean-forward="false" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
               <folding>
-                <marker date="1525256999823" expanded="true" signature="991:1326" ph="..." />
+                <marker date="1525259079672" expanded="true" signature="1034:1369" ph="..." />
               </folding>
             </state>
           </provider>
@@ -36,20 +36,25 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Node/public/home/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="631">
+            <state relative-caret-position="840">
               <caret line="40" column="39" lean-forward="false" selection-start-line="40" selection-start-column="39" selection-end-line="40" selection-end-column="39" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Node/routes/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="762">
-              <caret line="43" column="37" lean-forward="false" selection-start-line="43" selection-start-column="37" selection-end-line="43" selection-end-column="37" />
+            <state relative-caret-position="547">
+              <caret line="171" column="60" lean-forward="false" selection-start-line="171" selection-start-column="60" selection-end-line="171" selection-end-column="60" />
               <folding>
                 <element signature="e#216#321#0" expanded="false" />
+                <element signature="e#1904#2615#0" expanded="false" />
+                <element signature="e#3039#3516#0" expanded="false" />
+                <element signature="e#3619#4364#0" expanded="false" />
+                <element signature="n#!!block;n#shuffleQuestions#0" expanded="false" />
+                <element signature="e#5264#5996#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -58,8 +63,43 @@
       <file leaf-file-name="indexedDB.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Node/public/home/assets/js/indexedDB.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="589">
+            <state relative-caret-position="1890">
               <caret line="90" column="10" lean-forward="true" selection-start-line="90" selection-start-column="10" selection-end-line="90" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="makeQuiz.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Node/public/home/makeQuiz.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="makeQuiz.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Node/public/home/assets/js/makeQuiz.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="715">
+              <caret line="40" column="25" lean-forward="false" selection-start-line="40" selection-start-column="25" selection-end-line="40" selection-end-column="25" />
+              <folding>
+                <marker date="1525268688155" expanded="true" signature="223:1375" ph="..." />
+                <marker date="1525268688155" expanded="true" signature="484:1361" ph="..." />
+                <marker date="1525268688155" expanded="true" signature="518:915" ph="..." />
+                <marker date="1525268688155" expanded="true" signature="949:1346" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="playQuiz.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Node/public/home/assets/js/playQuiz.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="35" column="52" lean-forward="false" selection-start-line="35" selection-start-column="52" selection-end-line="35" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -68,8 +108,18 @@
       <file leaf-file-name="Quiz.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Node/Shared-javascript/Quiz.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="24" column="22" lean-forward="false" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
+            <state relative-caret-position="126">
+              <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="quizzes.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Node/routes/quizzes.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="57" lean-forward="true" selection-start-line="0" selection-start-column="57" selection-end-line="0" selection-end-column="57" />
               <folding />
             </state>
           </provider>
@@ -96,11 +146,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Node/public/home/assets/js/makeQuiz.js" />
         <option value="$PROJECT_DIR$/Node/app.js" />
         <option value="$PROJECT_DIR$/Node/Shared-javascript/Quiz.js" />
         <option value="$PROJECT_DIR$/Node/public/home/quiz.html" />
-        <option value="$PROJECT_DIR$/Node/public/home/assets/js/playQuiz.js" />
         <option value="$PROJECT_DIR$/Node/public/home/profile.html" />
         <option value="$PROJECT_DIR$/Node/public/home/assets/js/profile.js" />
         <option value="$PROJECT_DIR$/Node/public/home/quizEnd.html" />
@@ -110,10 +158,13 @@
         <option value="$PROJECT_DIR$/Node/public/index.html" />
         <option value="$PROJECT_DIR$/Node/public/sw-test/assets/js/app.js" />
         <option value="$PROJECT_DIR$/Node/public/assets/js/app.js" />
-        <option value="$PROJECT_DIR$/Node/routes/index.js" />
         <option value="$PROJECT_DIR$/Node/public/home/index.html" />
         <option value="$PROJECT_DIR$/Node/public/home/assets/js/indexedDB.js" />
         <option value="$PROJECT_DIR$/Node/public/home/assets/js/home.js" />
+        <option value="$PROJECT_DIR$/Node/public/home/assets/js/makeQuiz.js" />
+        <option value="$PROJECT_DIR$/Node/routes/quizzes.json" />
+        <option value="$PROJECT_DIR$/Node/public/home/assets/js/playQuiz.js" />
+        <option value="$PROJECT_DIR$/Node/routes/index.js" />
       </list>
     </option>
   </component>
@@ -178,8 +229,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -197,21 +246,6 @@
               <item name="Node" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Node" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Node" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Node" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Node" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="assets" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Node" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Node" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Node" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="assets" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="js" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="Node" type="b2602c69:ProjectViewProjectNode" />
@@ -247,6 +281,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -294,12 +330,13 @@
       <workItem from="1524659177778" duration="3773000" />
       <workItem from="1524842814692" duration="3727000" />
       <workItem from="1525100729299" duration="12662000" />
-      <workItem from="1525250685925" duration="5856000" />
+      <workItem from="1525250685925" duration="5995000" />
+      <workItem from="1525257507114" duration="6494000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39263000" />
+    <option name="totallyTimeSpent" value="45896000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -336,20 +373,17 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Node/public/home/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="19" column="19" lean-forward="false" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Node/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1491">
           <caret line="77" column="51" lean-forward="true" selection-start-line="77" selection-start-column="51" selection-end-line="77" selection-end-column="51" />
           <folding>
             <element signature="e#216#321#0" expanded="false" />
+            <element signature="e#1904#2615#0" expanded="false" />
+            <element signature="e#3039#3516#0" expanded="false" />
+            <element signature="e#3619#4364#0" expanded="false" />
+            <element signature="n#!!block;n#shuffleQuestions#0" expanded="false" />
+            <element signature="e#5264#5996#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -358,7 +392,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1260">
           <caret line="60" column="6" lean-forward="false" selection-start-line="52" selection-start-column="4" selection-end-line="60" selection-end-column="6" />
-          <folding />
+          <folding>
+            <marker date="1525268688155" expanded="true" signature="223:1375" ph="..." />
+            <marker date="1525268688155" expanded="true" signature="484:1361" ph="..." />
+            <marker date="1525268688155" expanded="true" signature="518:915" ph="..." />
+            <marker date="1525268688155" expanded="true" signature="949:1346" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -412,7 +451,7 @@
         <state relative-caret-position="252">
           <caret line="12" column="59" lean-forward="false" selection-start-line="12" selection-start-column="59" selection-end-line="12" selection-end-column="59" />
           <folding>
-            <marker date="1525256999823" expanded="true" signature="991:1326" ph="..." />
+            <marker date="1525259079672" expanded="true" signature="1034:1369" ph="..." />
           </folding>
         </state>
       </provider>
@@ -437,7 +476,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1260">
           <caret line="60" column="6" lean-forward="true" selection-start-line="52" selection-start-column="4" selection-end-line="60" selection-end-column="6" />
-          <folding />
+          <folding>
+            <marker date="1525268688155" expanded="true" signature="223:1375" ph="..." />
+            <marker date="1525268688155" expanded="true" signature="484:1361" ph="..." />
+            <marker date="1525268688155" expanded="true" signature="518:915" ph="..." />
+            <marker date="1525268688155" expanded="true" signature="949:1346" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -470,6 +514,11 @@
           <caret line="94" column="53" lean-forward="false" selection-start-line="94" selection-start-column="53" selection-end-line="94" selection-end-column="53" />
           <folding>
             <element signature="e#216#321#0" expanded="false" />
+            <element signature="e#1904#2615#0" expanded="false" />
+            <element signature="e#3039#3516#0" expanded="false" />
+            <element signature="e#3619#4364#0" expanded="false" />
+            <element signature="n#!!block;n#shuffleQuestions#0" expanded="false" />
+            <element signature="e#5264#5996#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -486,7 +535,7 @@
         <state relative-caret-position="252">
           <caret line="12" column="59" lean-forward="false" selection-start-line="12" selection-start-column="59" selection-end-line="12" selection-end-column="59" />
           <folding>
-            <marker date="1525256999823" expanded="true" signature="991:1326" ph="..." />
+            <marker date="1525259079672" expanded="true" signature="1034:1369" ph="..." />
           </folding>
         </state>
       </provider>
@@ -511,7 +560,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1260">
           <caret line="60" column="6" lean-forward="true" selection-start-line="52" selection-start-column="4" selection-end-line="60" selection-end-column="6" />
-          <folding />
+          <folding>
+            <marker date="1525268688155" expanded="true" signature="223:1375" ph="..." />
+            <marker date="1525268688155" expanded="true" signature="484:1361" ph="..." />
+            <marker date="1525268688155" expanded="true" signature="518:915" ph="..." />
+            <marker date="1525268688155" expanded="true" signature="949:1346" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -544,6 +598,11 @@
           <caret line="87" column="26" lean-forward="false" selection-start-line="87" selection-start-column="26" selection-end-line="87" selection-end-column="26" />
           <folding>
             <element signature="e#216#321#0" expanded="false" />
+            <element signature="e#1904#2615#0" expanded="false" />
+            <element signature="e#3039#3516#0" expanded="false" />
+            <element signature="e#3619#4364#0" expanded="false" />
+            <element signature="n#!!block;n#shuffleQuestions#0" expanded="false" />
+            <element signature="e#5264#5996#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -553,14 +612,6 @@
     <entry file="file://$PROJECT_DIR$/../cardeals/index.html" />
     <entry file="file://$PROJECT_DIR$/../cardeals/js/app.js" />
     <entry file="file://$PROJECT_DIR$/../cardeals/js/carService.js" />
-    <entry file="file://$PROJECT_DIR$/Node/public/home/assets/js/makeQuiz.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1260">
-          <caret line="60" column="6" lean-forward="false" selection-start-line="52" selection-start-column="4" selection-end-line="60" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Node/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="441">
@@ -616,10 +667,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Node/public/home/assets/js/playQuiz.js">
+    <entry file="file://$PROJECT_DIR$/Node/public/home/quiz.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="23" column="13" lean-forward="true" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+        <state relative-caret-position="630">
+          <caret line="36" column="9" lean-forward="true" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Node/public/home/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="40" column="39" lean-forward="false" selection-start-line="40" selection-start-column="39" selection-end-line="40" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Node/public/home/assets/js/indexedDB.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1890">
+          <caret line="90" column="10" lean-forward="true" selection-start-line="90" selection-start-column="10" selection-end-line="90" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Node/public/home/assets/js/home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="24" column="42" lean-forward="false" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
+          <folding>
+            <marker date="1525259079672" expanded="true" signature="1034:1369" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Node/Shared-javascript/Quiz.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -632,53 +716,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Node/public/home/quiz.html">
+    <entry file="file://$PROJECT_DIR$/Node/public/home/assets/js/makeQuiz.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="36" column="9" lean-forward="true" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
+        <state relative-caret-position="715">
+          <caret line="40" column="25" lean-forward="false" selection-start-line="40" selection-start-column="25" selection-end-line="40" selection-end-column="25" />
+          <folding>
+            <marker date="1525268688155" expanded="true" signature="223:1375" ph="..." />
+            <marker date="1525268688155" expanded="true" signature="484:1361" ph="..." />
+            <marker date="1525268688155" expanded="true" signature="518:915" ph="..." />
+            <marker date="1525268688155" expanded="true" signature="949:1346" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Node/Shared-javascript/Quiz.js">
+    <entry file="file://$PROJECT_DIR$/Node/routes/quizzes.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="24" column="22" lean-forward="false" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
+        <state relative-caret-position="0">
+          <caret line="0" column="57" lean-forward="true" selection-start-line="0" selection-start-column="57" selection-end-line="0" selection-end-column="57" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Node/public/home/index.html">
+    <entry file="file://$PROJECT_DIR$/Node/public/home/assets/js/playQuiz.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="631">
-          <caret line="40" column="39" lean-forward="false" selection-start-line="40" selection-start-column="39" selection-end-line="40" selection-end-column="39" />
+        <state relative-caret-position="442">
+          <caret line="35" column="52" lean-forward="false" selection-start-line="35" selection-start-column="52" selection-end-line="35" selection-end-column="52" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Node/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="762">
-          <caret line="43" column="37" lean-forward="false" selection-start-line="43" selection-start-column="37" selection-end-line="43" selection-end-column="37" />
+        <state relative-caret-position="547">
+          <caret line="171" column="60" lean-forward="false" selection-start-line="171" selection-start-column="60" selection-end-line="171" selection-end-column="60" />
           <folding>
             <element signature="e#216#321#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Node/public/home/assets/js/indexedDB.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="90" column="10" lean-forward="true" selection-start-line="90" selection-start-column="10" selection-end-line="90" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Node/public/home/assets/js/home.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="20" column="14" lean-forward="true" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
-          <folding>
-            <marker date="1525256999823" expanded="true" signature="991:1326" ph="..." />
+            <element signature="e#1904#2615#0" expanded="false" />
+            <element signature="e#3039#3516#0" expanded="false" />
+            <element signature="e#3619#4364#0" expanded="false" />
+            <element signature="n#!!block;n#shuffleQuestions#0" expanded="false" />
+            <element signature="e#5264#5996#0" expanded="false" />
           </folding>
         </state>
       </provider>

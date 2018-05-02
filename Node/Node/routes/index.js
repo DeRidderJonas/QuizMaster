@@ -29,7 +29,20 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/getAnyQuizes', function (req, res) {
-    connection.query(Q.getLastQuizID, function (err, result) {
+    readQuizzes()
+        .then(function (quizzesDB) {
+            let quizIDs = [];
+            let amountOfQuizzes = 5;
+            for (let i = 0; i < amountOfQuizzes; i++){
+                quizIDs.push(Math.floor(Math.random() * (quizzesDB.length)));
+            }
+            let quizzes = [];
+            for (let i=0; i < amountOfQuizzes; i++){
+                quizzes.push(quizzesDB[quizIDs[i]]);
+            }
+            res.json(JSON.stringify(quizzes));
+        });
+    /*connection.query(Q.getLastQuizID, function (err, result) {
         let highestID = result[0].quizID;
         let quizIDs = [];
         for (let i = 0; i < 5; i++){
@@ -46,14 +59,21 @@ router.get('/getAnyQuizes', function (req, res) {
             });
             res.json(JSON.stringify(quizes))
         })
-    })
+    })*/
 });
 
 router.post('/makeQuiz', function (req, res, next) {
     console.log(req.body.quiz);
     let quizJson = req.body.quiz;
     let quiz = JSON.parse(quizJson);
-    connection.query(Q.insertQuiz, [quiz.title, "", ""], function (err, result) {
+    readQuizzes().then(function (quizzesDB) {
+        quiz.id = quizzesDB.length;
+        quizzesDB.push(quiz);
+        fs.writeFile('../routes/quizzes.json', JSON.stringify(quizzesDB), function (err) {
+            if(err)console.log(err);
+        })
+    })
+    /*connection.query(Q.insertQuiz, [quiz.title, "", ""], function (err, result) {
         if(err){console.error(err)}
         let id = result.insertId;
         if (id > -1){
@@ -63,13 +83,13 @@ router.post('/makeQuiz', function (req, res, next) {
                 })
             })
         }
-    })
+    })*/
 
 });
 
 router.post('/getQuestionsForQuiz', function (req, res) {
     let quizID = req.body.quizID;
-    let questions = [];
+    /*let questions = [];
     connection.query(Q.getQuestionsForQuiz, [quizID], function (questionError, questionRows) {
         questionRows.forEach(q=>{
             let answers = [q.rightAnswer, q.wrongAnswer1, q.wrongAnswer2,q.wrongAnswer3];
@@ -83,10 +103,34 @@ router.post('/getQuestionsForQuiz', function (req, res) {
             questions.push(new Quiz.Question(q.question, answers[0], answers[1], answers[2], answers[3]));
         });
         res.json(JSON.stringify(questions));
-    });
+    });*/
+    getQuestionsForQuiz(quizID)
+        .then(shuffleQuestions)
+        .then(q=>res.json(JSON.stringify(q)))
 });
 
-function updateUserScore(userID, quizID, score) {
+function shuffleQuestions(questions){
+    let shuffled = [];
+    questions.forEach(q=>{
+        let chosenNumbers = [];
+        let random = Math.floor(Math.random()*4);
+        for(let i=0; i<4; i++){
+            while(chosenNumbers.indexOf(random) >= 0){
+                random = Math.floor(Math.random()*4);
+            }
+            chosenNumbers.push(random);
+        }
+        let shuffledQuestion = {"question": q.question};
+        shuffledQuestion["answer"+chosenNumbers[0]] = q.rightAnswer;
+        shuffledQuestion["answer"+chosenNumbers[1]] = q.wrongAnswer1;
+        shuffledQuestion["answer"+chosenNumbers[2]] = q.wrongAnswer2;
+        shuffledQuestion["answer"+chosenNumbers[3]] = q.wrongAnswer3;
+        shuffled.push(shuffledQuestion);
+    });
+    return shuffled;
+}
+
+/*function updateUserScore(userID, quizID, score) {
     connection.query(Q.getUserSCoreForQuiz, [userID, quizID], function (err, res) {
         console.log("got the score");
         if(err)console.error(err);
@@ -104,25 +148,33 @@ function updateUserScore(userID, quizID, score) {
             })
         }
     })
-}
+}*/
 
 router.post('/handleAnswers', function (req, res) {
-    console.log(req.body);
-    let userID = req.body.userID;
+    //let userID = req.body.userID;
     let quizID = req.body.quizID;
     let answers = JSON.parse(req.body.answers);
     let score = 0;
-    let rightAnswers = [];
-    connection.query(Q.getQuestionsForQuiz, [quizID], function (questionError, questionRows) {
-        questionRows.forEach(q => {
-            rightAnswers.push(q.rightAnswer);
+    //let rightAnswers = [];
+    // connection.query(Q.getQuestionsForQuiz, [quizID], function (questionError, questionRows) {
+    //     questionRows.forEach(q => {
+    //         rightAnswers.push(q.rightAnswer);
+    //     });
+    //     for (let i =0; i < rightAnswers.length; i++){
+    //         if (rightAnswers[i] === answers[i]) score++;
+    //     }
+    //     updateUserScore(userID, quizID, score);
+    // });
+    getQuestionsForQuiz(quizID)
+        .then(question=>question.map(q=>q.rightAnswer))
+        .then(function (correctAnswers) {
+            for(let i=0; i<correctAnswers.length; i++){
+                if(correctAnswers[i] === answers[i])score++;
+            }
+            console.log("score",score);
+            res.redirect("/home/quizEnd.html");
         });
-        for (let i =0; i < rightAnswers.length; i++){
-            if (rightAnswers[i] === answers[i]) score++;
-        }
-        updateUserScore(userID, quizID, score);
-    });
-    res.redirect("/home/quizEnd.html");
+
 });
 
 router.post('/getUserScores', function (req, res) {
@@ -143,5 +195,23 @@ router.post('/getUserScores', function (req, res) {
          })
      })
 });
+
+function readQuizzes() {
+    return new Promise(function (s, f) {
+        fs.readFile('../routes/quizzes.json', 'utf-8', function (err, data) {
+            if(err)f(err);
+            s(JSON.parse(data))
+        })
+    })
+}
+
+function getQuestionsForQuiz(quizID) {
+    console.log("getting questions for quizID", quizID);
+    return readQuizzes()
+        .then(quizzes => quizzes.filter(q=>q.id == quizID))
+        //.then(d=>console.log(d))
+        .then(quiz=>quiz.map(q=>q.questions))
+        .then(d=>d[0])
+}
 
 module.exports = router;

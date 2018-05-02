@@ -35,10 +35,10 @@ function handleSubmit(e) {
     for (let i = 1; i < currentAmountOfQuestions+1; i++){
         let newQuestion = {
             "question": document.getElementById("question"+i).value,
-            "answer1": document.getElementById("answer"+i+"_1").value,
-            "answer2": document.getElementById("answer"+i+"_2").value,
-            "answer3": document.getElementById("answer"+i+"_3").value,
-            "answer4": document.getElementById("answer"+i+"_4").value,
+            "rightAnswer": document.getElementById("answer"+i+"_1").value,
+            "wrongAnswer1": document.getElementById("answer"+i+"_2").value,
+            "wrongAnswer2": document.getElementById("answer"+i+"_3").value,
+            "wrongAnswer3": document.getElementById("answer"+i+"_4").value,
         };
         questions.push(newQuestion)
     }
