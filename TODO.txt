@@ -1,0 +1,4 @@
+To fix:
+
+-Service worker doesn't cache anything?
+-Indexed DB is async -> returning stuff in Module kinda fcked up. Fix this with Node promises
