@@ -1,9 +1,10 @@
-function Quiz(id,title, description){
+function Quiz(id,title, description, questions, avgScore, amountPlayed){
     this.id = id;
     this.title = title;
-    this.description = description;
-    this.questions = [];
-    this.imgUrl = ""
+    this.description = description || "";
+    this.questions = questions || [];
+    this.avgScore = avgScore || 0;
+    this.amountPlayed = amountPlayed || 0;
 }
 
 Quiz.prototype.addQuestion = function (question) {

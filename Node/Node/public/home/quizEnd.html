@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="Author" content="Jonas De Ridder"/><meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/shared.css">
     <link rel="stylesheet" type="text/css" href="assets/css/endQuiz.css">
     <title>Score</title>
 </head>
 <body>
   <nav>
-    <a href="index.html">Popular</a>
-    <a href="index.html">Interests</a>
+    <a href="index.html?mode=popular">Popular</a>
+    <a href="index.html?mode=search">Search</a>
     <a href="makeQuiz.html">Make Quiz</a>
-    <a href="profile.html">Profile</a>
+    <a href="stats.html">Profile</a>
   </nav>
   <main>
     <article class="Score">
@@ -21,31 +21,6 @@
         Your score: <span id="score"></span><br/>
         <span id="averageScore">Average score: <span id="avgScore"></span></span>
       </p>
-    </article>
-    <article>
-      <p>Your mistakes:</p>
-      <div class="mistakes"></div>
-    </article>
-    <article class="suggestions">
-      <h2>Related/Similar</h2>
-      <section>
-        <section>
-          <article class="suggestion">
-            <p id="suggestion0">lorem ipsum</p>
-          </article>
-          <article class="suggestion">
-            <p id="suggestion1">lorem ipsum</p>
-          </article>
-        </section>
-        <section>
-          <article class="suggestion">
-            <p id="suggestion2">lorem ipsum</p>
-          </article>
-          <article class="suggestion">
-            <p id="suggestion3">lorem ipsum</p>
-          </article>
-        </section>
-      </section>
     </article>
   </main>
   <script src="../assets/js/jquery-3.1.1.min.js"></script>

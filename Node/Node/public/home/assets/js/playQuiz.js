@@ -12,18 +12,19 @@ function handleFormSubmit(e) {
   if(currentQuestion < questions.length){
       fillInNewQuestion(questions[currentQuestion]);
   }else{
-      if (userID !== null){
-          $.ajax({
-              type: "POST",
-              url: '/handleAnswers',
-              data: {userID: userID, quizID: quizID, answers: JSON.stringify(answers)}
-          }).done(function(data, textStatus, jqXHR){
-              //redirect to quizEnd.html
-          }).fail(function(jqXHR, textStatus, errorThrown){
-              console.error(errorThrown);
-          });
-      }
-
+      $.ajax({
+          type: "POST",
+          url: '/handleAnswers',
+          data: {userID: userID, quizID: quizID, answers: JSON.stringify(answers)}
+      }).done(function(data, textStatus, jqXHR){
+          data = JSON.parse(data);
+          window.location.href = window.location.href.substring(0,window.location.href.lastIndexOf("quiz.html")) + "quizEnd.html?quiz=" + quizID
+              + "&score=" + data.score + "&avgScore=" + data.avgScore;
+      }).fail(function(jqXHR, textStatus, errorThrown){
+          console.error(errorThrown);
+          window.location.href = window.location.href.substring(0,window.location.href.lastIndexOf("quiz.html")) + "quizEnd.html?quiz=" + quizID
+              + "&score=No score admitted (maybe you are not connected to the server)&avgScore=Average score could not be retrieved (maybe you are not connected to the server)";
+      });
   }
 
 }
@@ -48,10 +49,20 @@ function getQuestions(quizID){
         fillInNewQuestion(questions[currentQuestion]);
     }).fail(function(jqXHR, textStatus, errorThrown){
         console.error(errorThrown);
+        if(db.dbAvailable()){
+            db.getQuestionsForQuiz(parseInt(quizID))
+                .then(qs=>questions=qs)
+                .then(_=>fillInNewQuestion(questions[currentQuestion]))
+                .catch(err=>console.error(err))
+        }else{
+            $('#question').html("Something went wrong, try again later...")
+        }
     });
 }
 
 $(document).ready(function(){
+    quizID = getParameterByName("quiz");
     getQuestions(quizID);
     $('input[type=button]').on('click', handleFormSubmit);
 });
+

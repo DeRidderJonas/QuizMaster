@@ -8,12 +8,6 @@ function getQuizes(){
         data = JSON.parse(data);
         FillInQuizzes(data);
         if(db.dbAvailable()){
-            // let addNewQuizzes = db.canAddMoreQuizzes();
-            // if (addNewQuizzes){
-            //     data.forEach(quiz=>{
-            //         db.addQuiz(quiz);
-            //     })
-            // }
             db.canAddMoreQuizzes().then(function (roomAvailable) {
                 if(roomAvailable){
                     data.forEach(quiz=>db.addQuiz(quiz))

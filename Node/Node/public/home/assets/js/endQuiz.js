@@ -1,7 +1,7 @@
 function DisplayScore(){
   //get score from node
-  let score = 15;
-  let avgScore = 17;
+  let score = getParameterByName("score");
+  let avgScore = getParameterByName("avgScore");
   $('#score').html(score);
   $('#avgScore').html(avgScore);
 }
@@ -13,6 +13,16 @@ function DisplaySuggestions(){
   for (var i = 0; i < suggestions.length; i++) {
     $('#suggestion' + i).html("<a href='" + suggestions[i].url + "'>" + suggestions[i].name + "</a>");
   }
+}
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
 $(document).ready(function(){

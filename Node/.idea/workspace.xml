@@ -11,11 +11,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Node/public/assets/js/app.js">
+      <file leaf-file-name="getParameterByName.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Node/public/home/assets/js/getParameterByName.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
-              <caret line="30" column="36" lean-forward="false" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
+            <state relative-caret-position="168">
+              <caret line="8" column="1" lean-forward="false" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -24,10 +24,10 @@
       <file leaf-file-name="home.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Node/public/home/assets/js/home.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="24" column="42" lean-forward="false" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
+            <state relative-caret-position="169">
+              <caret line="9" column="29" lean-forward="false" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
               <folding>
-                <marker date="1525259079672" expanded="true" signature="1034:1369" ph="..." />
+                <marker date="1525284821698" expanded="true" signature="820:1155" ph="..." />
               </folding>
             </state>
           </provider>
@@ -36,25 +36,27 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Node/public/home/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="840">
-              <caret line="40" column="39" lean-forward="false" selection-start-line="40" selection-start-column="39" selection-end-line="40" selection-end-column="39" />
+            <state relative-caret-position="655">
+              <caret line="40" column="57" lean-forward="true" selection-start-line="40" selection-start-column="57" selection-end-line="40" selection-end-column="57" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Node/routes/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="547">
-              <caret line="171" column="60" lean-forward="false" selection-start-line="171" selection-start-column="60" selection-end-line="171" selection-end-column="60" />
+            <state relative-caret-position="103">
+              <caret line="114" column="0" lean-forward="false" selection-start-line="114" selection-start-column="0" selection-end-line="133" selection-end-column="1" />
               <folding>
-                <element signature="e#216#321#0" expanded="false" />
-                <element signature="e#1904#2615#0" expanded="false" />
-                <element signature="e#3039#3516#0" expanded="false" />
-                <element signature="e#3619#4364#0" expanded="false" />
-                <element signature="n#!!block;n#shuffleQuestions#0" expanded="false" />
-                <element signature="e#5264#5996#0" expanded="false" />
+                <element signature="e#142#1260#0" expanded="false" />
+                <element signature="e#1948#2659#0" expanded="false" />
+                <element signature="e#3207#3684#0" expanded="false" />
+                <element signature="e#3787#4532#0" expanded="false" />
+                <element signature="e#5472#6204#0" expanded="false" />
+                <element signature="e#6399#6423#0" expanded="false" />
+                <element signature="e#7691#8471#0" expanded="false" />
+                <marker date="1525284565042" expanded="false" signature="218:323" ph="{&quot;host&quot;: 'localhost'...}" />
               </folding>
             </state>
           </provider>
@@ -63,9 +65,11 @@
       <file leaf-file-name="indexedDB.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Node/public/home/assets/js/indexedDB.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1890">
-              <caret line="90" column="10" lean-forward="true" selection-start-line="90" selection-start-column="10" selection-end-line="90" selection-end-column="10" />
-              <folding />
+            <state relative-caret-position="148">
+              <caret line="76" column="15" lean-forward="false" selection-start-line="76" selection-start-column="15" selection-end-line="76" selection-end-column="15" />
+              <folding>
+                <element signature="e#2248#3070#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -73,53 +77,48 @@
       <file leaf-file-name="makeQuiz.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Node/public/home/makeQuiz.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="651">
+              <caret line="31" column="58" lean-forward="false" selection-start-line="31" selection-start-column="58" selection-end-line="31" selection-end-column="58" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="makeQuiz.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Node/public/home/assets/js/makeQuiz.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="715">
-              <caret line="40" column="25" lean-forward="false" selection-start-line="40" selection-start-column="25" selection-end-line="40" selection-end-column="25" />
-              <folding>
-                <marker date="1525268688155" expanded="true" signature="223:1375" ph="..." />
-                <marker date="1525268688155" expanded="true" signature="484:1361" ph="..." />
-                <marker date="1525268688155" expanded="true" signature="518:915" ph="..." />
-                <marker date="1525268688155" expanded="true" signature="949:1346" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="playQuiz.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="playQuiz.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Node/public/home/assets/js/playQuiz.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="35" column="52" lean-forward="false" selection-start-line="35" selection-start-column="52" selection-end-line="35" selection-end-column="52" />
+            <state relative-caret-position="210">
+              <caret line="16" column="10" lean-forward="false" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Quiz.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Node/Shared-javascript/Quiz.js">
+      <file leaf-file-name="stats.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Node/public/home/stats.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="126">
-              <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+              <caret line="6" column="4" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="quizzes.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Node/routes/quizzes.json">
+      <file leaf-file-name="quiz.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Node/public/home/quiz.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="57" lean-forward="true" selection-start-line="0" selection-start-column="57" selection-end-line="0" selection-end-column="57" />
+            <state relative-caret-position="505">
+              <caret line="32" column="53" lean-forward="false" selection-start-line="32" selection-start-column="53" selection-end-line="32" selection-end-column="53" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="quizEnd.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Node/public/home/quizEnd.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="12" column="47" lean-forward="false" selection-start-line="12" selection-start-column="47" selection-end-line="12" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -138,6 +137,7 @@
     <findStrings>
       <find>.js</find>
       <find>Completed Quizes: &lt;span id=&quot;completedQuizes&quot;&gt;</find>
+      <find>questions.foR</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -147,24 +147,27 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Node/app.js" />
-        <option value="$PROJECT_DIR$/Node/Shared-javascript/Quiz.js" />
-        <option value="$PROJECT_DIR$/Node/public/home/quiz.html" />
-        <option value="$PROJECT_DIR$/Node/public/home/profile.html" />
         <option value="$PROJECT_DIR$/Node/public/home/assets/js/profile.js" />
-        <option value="$PROJECT_DIR$/Node/public/home/quizEnd.html" />
         <option value="$PROJECT_DIR$/Node/public/assets/js/serviceWorker/swRegister.js" />
         <option value="$PROJECT_DIR$/Node/public/assets/js/serviceWorker/app.js" />
         <option value="$PROJECT_DIR$/Node/public/assets/js/sw.js" />
         <option value="$PROJECT_DIR$/Node/public/index.html" />
         <option value="$PROJECT_DIR$/Node/public/sw-test/assets/js/app.js" />
         <option value="$PROJECT_DIR$/Node/public/assets/js/app.js" />
-        <option value="$PROJECT_DIR$/Node/public/home/index.html" />
-        <option value="$PROJECT_DIR$/Node/public/home/assets/js/indexedDB.js" />
-        <option value="$PROJECT_DIR$/Node/public/home/assets/js/home.js" />
         <option value="$PROJECT_DIR$/Node/public/home/assets/js/makeQuiz.js" />
+        <option value="$PROJECT_DIR$/Node/public/home/assets/js/endQuiz.js" />
+        <option value="$PROJECT_DIR$/Node/Shared-javascript/Quiz.js" />
         <option value="$PROJECT_DIR$/Node/routes/quizzes.json" />
-        <option value="$PROJECT_DIR$/Node/public/home/assets/js/playQuiz.js" />
+        <option value="$PROJECT_DIR$/Node/public/home/profile.html" />
+        <option value="$PROJECT_DIR$/Node/public/home/quizEnd.html" />
+        <option value="$PROJECT_DIR$/Node/public/home/assets/js/getParameterByName.js" />
+        <option value="$PROJECT_DIR$/Node/public/home/index.html" />
+        <option value="$PROJECT_DIR$/Node/public/home/makeQuiz.html" />
         <option value="$PROJECT_DIR$/Node/routes/index.js" />
+        <option value="$PROJECT_DIR$/Node/public/home/assets/js/home.js" />
+        <option value="$PROJECT_DIR$/Node/public/home/assets/js/indexedDB.js" />
+        <option value="$PROJECT_DIR$/Node/public/home/quiz.html" />
+        <option value="$PROJECT_DIR$/Node/public/home/assets/js/playQuiz.js" />
       </list>
     </option>
   </component>
@@ -331,18 +334,17 @@
       <workItem from="1524842814692" duration="3727000" />
       <workItem from="1525100729299" duration="12662000" />
       <workItem from="1525250685925" duration="5995000" />
-      <workItem from="1525257507114" duration="6494000" />
+      <workItem from="1525257507114" duration="13362000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45896000" />
+    <option name="totallyTimeSpent" value="52764000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16165413" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16165413" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -373,34 +375,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Node/routes/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1491">
-          <caret line="77" column="51" lean-forward="true" selection-start-line="77" selection-start-column="51" selection-end-line="77" selection-end-column="51" />
-          <folding>
-            <element signature="e#216#321#0" expanded="false" />
-            <element signature="e#1904#2615#0" expanded="false" />
-            <element signature="e#3039#3516#0" expanded="false" />
-            <element signature="e#3619#4364#0" expanded="false" />
-            <element signature="n#!!block;n#shuffleQuestions#0" expanded="false" />
-            <element signature="e#5264#5996#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Node/public/home/assets/js/makeQuiz.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1260">
-          <caret line="60" column="6" lean-forward="false" selection-start-line="52" selection-start-column="4" selection-end-line="60" selection-end-column="6" />
-          <folding>
-            <marker date="1525268688155" expanded="true" signature="223:1375" ph="..." />
-            <marker date="1525268688155" expanded="true" signature="484:1361" ph="..." />
-            <marker date="1525268688155" expanded="true" signature="518:915" ph="..." />
-            <marker date="1525268688155" expanded="true" signature="949:1346" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Node/public/home/assets/js/playQuiz.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -409,7 +383,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Node/public/home/profile.html">
+    <entry file="file://$PROJECT_DIR$/Node/public/home/stats.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
           <caret line="19" column="59" lean-forward="false" selection-start-line="19" selection-start-column="59" selection-end-line="19" selection-end-column="59" />
@@ -431,7 +405,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Node/public/home/assets/js/profile.js">
+    <entry file="file://$PROJECT_DIR$/Node/public/home/assets/js/stats.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="819">
           <caret line="39" column="66" lean-forward="false" selection-start-line="39" selection-start-column="66" selection-end-line="39" selection-end-column="66" />
@@ -451,7 +425,7 @@
         <state relative-caret-position="252">
           <caret line="12" column="59" lean-forward="false" selection-start-line="12" selection-start-column="59" selection-end-line="12" selection-end-column="59" />
           <folding>
-            <marker date="1525259079672" expanded="true" signature="1034:1369" ph="..." />
+            <marker date="1525284821698" expanded="true" signature="820:1155" ph="..." />
           </folding>
         </state>
       </provider>
@@ -477,10 +451,10 @@
         <state relative-caret-position="1260">
           <caret line="60" column="6" lean-forward="true" selection-start-line="52" selection-start-column="4" selection-end-line="60" selection-end-column="6" />
           <folding>
-            <marker date="1525268688155" expanded="true" signature="223:1375" ph="..." />
-            <marker date="1525268688155" expanded="true" signature="484:1361" ph="..." />
-            <marker date="1525268688155" expanded="true" signature="518:915" ph="..." />
-            <marker date="1525268688155" expanded="true" signature="949:1346" ph="..." />
+            <marker date="1525281273362" expanded="true" signature="223:1375" ph="..." />
+            <marker date="1525281273362" expanded="true" signature="484:1361" ph="..." />
+            <marker date="1525281273362" expanded="true" signature="518:915" ph="..." />
+            <marker date="1525281273362" expanded="true" signature="949:1346" ph="..." />
           </folding>
         </state>
       </provider>
@@ -513,12 +487,14 @@
         <state relative-caret-position="1848">
           <caret line="94" column="53" lean-forward="false" selection-start-line="94" selection-start-column="53" selection-end-line="94" selection-end-column="53" />
           <folding>
-            <element signature="e#216#321#0" expanded="false" />
-            <element signature="e#1904#2615#0" expanded="false" />
-            <element signature="e#3039#3516#0" expanded="false" />
-            <element signature="e#3619#4364#0" expanded="false" />
-            <element signature="n#!!block;n#shuffleQuestions#0" expanded="false" />
-            <element signature="e#5264#5996#0" expanded="false" />
+            <element signature="e#142#1260#0" expanded="false" />
+            <element signature="e#1948#2659#0" expanded="false" />
+            <element signature="e#3207#3684#0" expanded="false" />
+            <element signature="e#3787#4532#0" expanded="false" />
+            <element signature="e#5472#6204#0" expanded="false" />
+            <element signature="e#6399#6423#0" expanded="false" />
+            <element signature="e#7691#8471#0" expanded="false" />
+            <marker date="1525284565042" expanded="false" signature="218:323" ph="{&quot;host&quot;: 'localhost'...}" />
           </folding>
         </state>
       </provider>
@@ -535,7 +511,7 @@
         <state relative-caret-position="252">
           <caret line="12" column="59" lean-forward="false" selection-start-line="12" selection-start-column="59" selection-end-line="12" selection-end-column="59" />
           <folding>
-            <marker date="1525259079672" expanded="true" signature="1034:1369" ph="..." />
+            <marker date="1525284821698" expanded="true" signature="820:1155" ph="..." />
           </folding>
         </state>
       </provider>
@@ -561,10 +537,10 @@
         <state relative-caret-position="1260">
           <caret line="60" column="6" lean-forward="true" selection-start-line="52" selection-start-column="4" selection-end-line="60" selection-end-column="6" />
           <folding>
-            <marker date="1525268688155" expanded="true" signature="223:1375" ph="..." />
-            <marker date="1525268688155" expanded="true" signature="484:1361" ph="..." />
-            <marker date="1525268688155" expanded="true" signature="518:915" ph="..." />
-            <marker date="1525268688155" expanded="true" signature="949:1346" ph="..." />
+            <marker date="1525281273362" expanded="true" signature="223:1375" ph="..." />
+            <marker date="1525281273362" expanded="true" signature="484:1361" ph="..." />
+            <marker date="1525281273362" expanded="true" signature="518:915" ph="..." />
+            <marker date="1525281273362" expanded="true" signature="949:1346" ph="..." />
           </folding>
         </state>
       </provider>
@@ -597,12 +573,14 @@
         <state relative-caret-position="1701">
           <caret line="87" column="26" lean-forward="false" selection-start-line="87" selection-start-column="26" selection-end-line="87" selection-end-column="26" />
           <folding>
-            <element signature="e#216#321#0" expanded="false" />
-            <element signature="e#1904#2615#0" expanded="false" />
-            <element signature="e#3039#3516#0" expanded="false" />
-            <element signature="e#3619#4364#0" expanded="false" />
-            <element signature="n#!!block;n#shuffleQuestions#0" expanded="false" />
-            <element signature="e#5264#5996#0" expanded="false" />
+            <element signature="e#142#1260#0" expanded="false" />
+            <element signature="e#1948#2659#0" expanded="false" />
+            <element signature="e#3207#3684#0" expanded="false" />
+            <element signature="e#3787#4532#0" expanded="false" />
+            <element signature="e#5472#6204#0" expanded="false" />
+            <element signature="e#6399#6423#0" expanded="false" />
+            <element signature="e#7691#8471#0" expanded="false" />
+            <marker date="1525284565042" expanded="false" signature="218:323" ph="{&quot;host&quot;: 'localhost'...}" />
           </folding>
         </state>
       </provider>
@@ -619,7 +597,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Node/public/home/assets/js/profile.js">
+    <entry file="file://$PROJECT_DIR$/Node/public/home/assets/js/stats.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="39" column="66" lean-forward="false" selection-start-line="39" selection-start-column="66" selection-end-line="39" selection-end-column="66" />
@@ -627,22 +605,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Node/public/home/profile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="19" column="59" lean-forward="false" selection-start-line="19" selection-start-column="59" selection-end-line="19" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Node/public/assets/js/serviceWorker/app.js" />
     <entry file="file://$PROJECT_DIR$/Node/public/assets/js/serviceWorker/swRegister.js" />
-    <entry file="file://$PROJECT_DIR$/Node/public/home/quizEnd.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" column="119" lean-forward="false" selection-start-line="4" selection-start-column="119" selection-end-line="4" selection-end-column="119" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Node/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -667,96 +631,133 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Node/public/home/quiz.html">
+    <entry file="file://$PROJECT_DIR$/Node/public/home/assets/js/makeQuiz.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="36" column="9" lean-forward="true" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Node/public/home/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="40" column="39" lean-forward="false" selection-start-line="40" selection-start-column="39" selection-end-line="40" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Node/public/home/assets/js/indexedDB.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1890">
-          <caret line="90" column="10" lean-forward="true" selection-start-line="90" selection-start-column="10" selection-end-line="90" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Node/public/home/assets/js/home.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="24" column="42" lean-forward="false" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
+        <state relative-caret-position="337">
+          <caret line="46" column="65" lean-forward="false" selection-start-line="46" selection-start-column="65" selection-end-line="46" selection-end-column="65" />
           <folding>
-            <marker date="1525259079672" expanded="true" signature="1034:1369" ph="..." />
+            <marker date="1525281273362" expanded="true" signature="223:1375" ph="..." />
+            <marker date="1525281273362" expanded="true" signature="484:1361" ph="..." />
+            <marker date="1525281273362" expanded="true" signature="518:915" ph="..." />
+            <marker date="1525281273362" expanded="true" signature="949:1346" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Node/public/home/assets/js/endQuiz.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" column="47" lean-forward="false" selection-start-line="3" selection-start-column="47" selection-end-line="3" selection-end-column="47" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Node/Shared-javascript/Quiz.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
-          <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+          <caret line="6" column="42" lean-forward="false" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Node/public/home/makeQuiz.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Node/public/home/assets/js/makeQuiz.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="715">
-          <caret line="40" column="25" lean-forward="false" selection-start-line="40" selection-start-column="25" selection-end-line="40" selection-end-column="25" />
-          <folding>
-            <marker date="1525268688155" expanded="true" signature="223:1375" ph="..." />
-            <marker date="1525268688155" expanded="true" signature="484:1361" ph="..." />
-            <marker date="1525268688155" expanded="true" signature="518:915" ph="..." />
-            <marker date="1525268688155" expanded="true" signature="949:1346" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Node/routes/quizzes.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="57" lean-forward="true" selection-start-line="0" selection-start-column="57" selection-end-line="0" selection-end-column="57" />
+          <caret line="0" column="323" lean-forward="false" selection-start-line="0" selection-start-column="323" selection-end-line="0" selection-end-column="323" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Node/public/home/assets/js/playQuiz.js">
+    <entry file="file://$PROJECT_DIR$/Node/public/home/quizEnd.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="35" column="52" lean-forward="false" selection-start-line="35" selection-start-column="52" selection-end-line="35" selection-end-column="52" />
+        <state relative-caret-position="252">
+          <caret line="12" column="47" lean-forward="false" selection-start-line="12" selection-start-column="47" selection-end-line="12" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Node/public/home/assets/js/getParameterByName.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="8" column="1" lean-forward="false" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Node/public/home/makeQuiz.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="651">
+          <caret line="31" column="58" lean-forward="false" selection-start-line="31" selection-start-column="58" selection-end-line="31" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Node/public/home/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="655">
+          <caret line="40" column="57" lean-forward="true" selection-start-line="40" selection-start-column="57" selection-end-line="40" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Node/public/home/assets/js/home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="9" column="29" lean-forward="false" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
+          <folding>
+            <marker date="1525284821698" expanded="true" signature="820:1155" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Node/public/home/stats.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="6" column="4" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Node/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="547">
-          <caret line="171" column="60" lean-forward="false" selection-start-line="171" selection-start-column="60" selection-end-line="171" selection-end-column="60" />
+        <state relative-caret-position="103">
+          <caret line="114" column="0" lean-forward="false" selection-start-line="114" selection-start-column="0" selection-end-line="133" selection-end-column="1" />
           <folding>
-            <element signature="e#216#321#0" expanded="false" />
-            <element signature="e#1904#2615#0" expanded="false" />
-            <element signature="e#3039#3516#0" expanded="false" />
-            <element signature="e#3619#4364#0" expanded="false" />
-            <element signature="n#!!block;n#shuffleQuestions#0" expanded="false" />
-            <element signature="e#5264#5996#0" expanded="false" />
+            <element signature="e#142#1260#0" expanded="false" />
+            <element signature="e#1948#2659#0" expanded="false" />
+            <element signature="e#3207#3684#0" expanded="false" />
+            <element signature="e#3787#4532#0" expanded="false" />
+            <element signature="e#5472#6204#0" expanded="false" />
+            <element signature="e#6399#6423#0" expanded="false" />
+            <element signature="e#7691#8471#0" expanded="false" />
+            <marker date="1525284565042" expanded="false" signature="218:323" ph="{&quot;host&quot;: 'localhost'...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Node/public/home/assets/js/indexedDB.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="76" column="15" lean-forward="false" selection-start-line="76" selection-start-column="15" selection-end-line="76" selection-end-column="15" />
+          <folding>
+            <element signature="e#2248#3070#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Node/public/home/quiz.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="505">
+          <caret line="32" column="53" lean-forward="false" selection-start-line="32" selection-start-column="53" selection-end-line="32" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Node/public/home/assets/js/playQuiz.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="16" column="10" lean-forward="false" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
+          <folding />
         </state>
       </provider>
     </entry>

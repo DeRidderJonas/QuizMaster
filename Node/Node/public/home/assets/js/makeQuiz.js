@@ -44,6 +44,7 @@ function handleSubmit(e) {
     }
     let quiz = {
         "title": document.getElementById("quizTitle").value,
+        "description": document.getElementById("quizDesc").value,
         "questions": questions
     };
     console.log(JSON.stringify(quiz));

@@ -11,15 +11,17 @@
 </head>
 <body>
   <nav>
-    <a href="index.html">Popular</a>
-    <a href="index.html">Interests</a>
+      <a href="index.html?mode=popular">Popular</a>
+      <a href="index.html?mode=search">Search</a>
     <a href="makeQuiz.html">Make Quiz</a>
-    <a href="profile.html">Profile</a>
+    <a href="stats.html">Profile</a>
   </nav>
   <main>
     <form action="http://localhost:3000/makeQuiz" method="post" id="quizForm">
       <label for="quizTitle">Quiz title:</label>
       <input type="text" name="quizTitle" id="quizTitle">
+        <label for="quizDesc">Quiz description:</label>
+        <textarea name="quizDescription" id="quizDesc" rows="2"></textarea>
       <input type="number" name="amountOfQuestions" hidden>
       <fieldset id="questions">
       </fieldset>

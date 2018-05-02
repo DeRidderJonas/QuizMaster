@@ -14,28 +14,30 @@
     <h1 id="quizTitle">INSERT QUIZ TITLE</h1>
   </header>
   <nav>
-    <a href="index.html">Popular</a>
-    <a href="index.html">Interests</a>
+      <a href="index.html?mode=popular">Popular</a>
+      <a href="index.html?mode=search">Search</a>
     <a href="makeQuiz.html">Make Quiz</a>
-    <a href="profile.html">Profile</a>
+    <a href="stats.html">Profile</a>
   </nav>
   <main>
     <form action="#">
       <img src="assets/images/banner_question.jpg" alt="Question Hint" title="Question Hint">
-      <h2 id="question">INSERT QUESTION HERE</h2>
+      <h2 id="question"></h2>
       <section class="answers">
         <article>
-          <input type="button" name="answer1" value="INSERT ANSWER HERE">
-          <input type="button" name="answer2" value="INSERT ANSWER HERE">
+          <input type="button" name="answer1" value="">
+          <input type="button" name="answer2" value="">
         </article>
         <article>
-          <input type="button" name="answer3" value="INSERT ANSWER HERE">
-          <input type="button" name="answer4" value="INSERT ANSWER HERE">
+          <input type="button" name="answer3" value="">
+          <input type="button" name="answer4" value="">
         </article>
       </section>
     </form>
   </main>
   <script src="../assets/js/jquery-3.1.1.min.js"></script>
+  <script src="assets/js/getParameterByName.js"></script>
+  <script src="assets/js/indexedDB.js"></script>
   <script src="assets/js/playQuiz.js"></script>
 </body>
 </html>

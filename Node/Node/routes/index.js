@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 let fs = require("fs");
 const Quiz = require('./../Shared-javascript/Quiz');
-const mysql = require("mysql");
+/*const mysql = require("mysql");
 const connection = mysql.createConnection({
     host: 'localhost',
     post: 3306,
@@ -21,7 +21,7 @@ const Q = {
     updateUserScore: "update userSCores set score = ? where userID = ? and quizID = ?",
     getUserScores: "select q.name as quizName, us.score as score from userscores us join quiz q on us.quizID = q.quizID where userID = ?",
     getQuizzesCreatedByUser: "select name as quizName, avgScore, description, tags from quiz where authorID = ?"
-};
+};*/
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -41,7 +41,8 @@ router.get('/getAnyQuizes', function (req, res) {
                 quizzes.push(quizzesDB[quizIDs[i]]);
             }
             res.json(JSON.stringify(quizzes));
-        });
+        })
+        .catch(err=>console.error(err));
     /*connection.query(Q.getLastQuizID, function (err, result) {
         let highestID = result[0].quizID;
         let quizIDs = [];
@@ -65,14 +66,15 @@ router.get('/getAnyQuizes', function (req, res) {
 router.post('/makeQuiz', function (req, res, next) {
     console.log(req.body.quiz);
     let quizJson = req.body.quiz;
-    let quiz = JSON.parse(quizJson);
+    let quizObj = JSON.parse(quizJson);
+    let quiz = new Quiz.Quiz(0,quizObj.title, quizObj.description, quizObj.questions, 0);
     readQuizzes().then(function (quizzesDB) {
         quiz.id = quizzesDB.length;
         quizzesDB.push(quiz);
         fs.writeFile('../routes/quizzes.json', JSON.stringify(quizzesDB), function (err) {
             if(err)console.log(err);
         })
-    })
+    }).catch(err=>console.error(err))
     /*connection.query(Q.insertQuiz, [quiz.title, "", ""], function (err, result) {
         if(err){console.error(err)}
         let id = result.insertId;
@@ -107,6 +109,7 @@ router.post('/getQuestionsForQuiz', function (req, res) {
     getQuestionsForQuiz(quizID)
         .then(shuffleQuestions)
         .then(q=>res.json(JSON.stringify(q)))
+        .catch(err=>console.error(err))
 });
 
 function shuffleQuestions(questions){
@@ -172,9 +175,13 @@ router.post('/handleAnswers', function (req, res) {
                 if(correctAnswers[i] === answers[i])score++;
             }
             console.log("score",score);
-            res.redirect("/home/quizEnd.html");
-        });
-
+            getAvgScoreAndAmountPlayedForQuiz(quizID).then(quizDetail=>{
+                console.log(quizDetail);
+                let newAvg = Math.round(((quizDetail.avgScore*quizDetail.amountPlayed)+score)/(quizDetail.amountPlayed+1) * 100) / 100;
+                updateQuiz(quizID,["avgScore","amountPlayed"],[newAvg,(quizDetail.amountPlayed+1)]);
+                res.send(JSON.stringify({"score":score, "avgScore":newAvg}))
+            }).catch(err=>console.error(err));
+        }).catch(err=>console.error(err));
 });
 
 router.post('/getUserScores', function (req, res) {
@@ -205,13 +212,35 @@ function readQuizzes() {
     })
 }
 
+function getQuizById(quizID) {
+    return readQuizzes().then(quizzes => quizzes.filter(q=>q.id == quizID)[0])
+        .catch(err=>console.error(err))
+}
+
+function updateQuiz(quizID, fields, newValues) {
+    readQuizzes()
+        .then(function (quizzesDB) {
+            for(let i=0;i<fields.length;i++){
+                quizzesDB[quizID][fields[i]] = newValues[i];
+            }
+            fs.writeFile('../routes/quizzes.json', JSON.stringify(quizzesDB), function (err) {
+                if(err)console.log(err);
+            })
+        })
+        .catch(err=>console.error(err))
+}
+
 function getQuestionsForQuiz(quizID) {
-    console.log("getting questions for quizID", quizID);
-    return readQuizzes()
-        .then(quizzes => quizzes.filter(q=>q.id == quizID))
-        //.then(d=>console.log(d))
-        .then(quiz=>quiz.map(q=>q.questions))
-        .then(d=>d[0])
+    return getQuizById(quizID)
+        .then(q=>q.questions)
+        .catch(err=>console.error(err))
+}
+
+function getAvgScoreAndAmountPlayedForQuiz(quizID) {
+    return getQuizById(quizID).then(q=>{
+        console.log(q);
+        return {"avgScore":q.avgScore, "amountPlayed":q.amountPlayed}
+    }).catch(err=>console.error(err))
 }
 
 module.exports = router;

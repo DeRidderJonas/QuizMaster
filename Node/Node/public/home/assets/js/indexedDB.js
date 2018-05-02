@@ -67,10 +67,36 @@ const db = (function () {
     }
 
     function getQuiz(id){
-        if (id > 0 && id < maxAmountQuizzesInIndexedDB){
+        if (id >= 0 && id < maxAmountQuizzesInIndexedDB){
             return promiseToGet(id);
         }
         return null;
+    }
+
+    function getQuestionsForQuiz(id) {
+        return getQuiz(id).then(q=>q.questions)
+            .then(shuffleQuestions)
+    }
+
+    function shuffleQuestions(questions){
+        let shuffled = [];
+        questions.forEach(q=>{
+            let chosenNumbers = [];
+            let random = Math.floor(Math.random()*4);
+            for(let i=0; i<4; i++){
+                while(chosenNumbers.indexOf(random) >= 0){
+                    random = Math.floor(Math.random()*4);
+                }
+                chosenNumbers.push(random);
+            }
+            let shuffledQuestion = {"question": q.question};
+            shuffledQuestion["answer"+chosenNumbers[0]] = q.rightAnswer;
+            shuffledQuestion["answer"+chosenNumbers[1]] = q.wrongAnswer1;
+            shuffledQuestion["answer"+chosenNumbers[2]] = q.wrongAnswer2;
+            shuffledQuestion["answer"+chosenNumbers[3]] = q.wrongAnswer3;
+            shuffled.push(shuffledQuestion);
+        });
+        return shuffled;
     }
 
     function range(amount){
@@ -90,7 +116,7 @@ const db = (function () {
             return amount < maxAmountQuizzesInIndexedDB;
         });
     }
-    return {addQuiz: addQuiz, getQuiz: getQuiz, getAmountOfQuizzes: promiseToCount,
-        canAddMoreQuizzes: canAddMoreQuizzes, getMultipleQuizzes:getMultipleQuizzes,
-        dbAvailable:dbAvailable};
+    return {addQuiz, getQuiz, getAmountOfQuizzes: promiseToCount,
+        canAddMoreQuizzes, getMultipleQuizzes,getQuestionsForQuiz,
+        dbAvailable};
 })();
