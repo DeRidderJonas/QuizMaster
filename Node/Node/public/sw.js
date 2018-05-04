@@ -17,8 +17,7 @@ self.addEventListener('install', function (event) {
                 'assets/js/makeQuiz.js',
                 'index.html',
                 'makeQuiz.html',
-                'quiz.html',
-                'quizEnd.html'
+                'quiz.html'
             ])
         })
     )

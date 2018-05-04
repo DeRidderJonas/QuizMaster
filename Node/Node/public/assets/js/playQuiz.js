@@ -22,8 +22,8 @@ function handleFormSubmit(e) {
               + "&score=" + data.score + "&avgScore=" + data.avgScore;
       }).fail(function(jqXHR, textStatus, errorThrown){
           console.error(errorThrown);
-          window.location.href = window.location.href.substring(0,window.location.href.lastIndexOf("quiz.html")) + "quizEnd.html?quiz=" + quizID
-              + "&score=No score admitted (maybe you are not connected to the server)&avgScore=Average score could not be retrieved (maybe you are not connected to the server)";
+          $('#question').html("Sorry, Your score could not be validated due to connetion issues. Try again later");
+          $('.answers').html("Check your connection to the internet.");
       });
   }
 
