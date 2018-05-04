@@ -1,7 +1,6 @@
 To fix:
 
--Service Workes caches /getAnyQuizes tough it shouldn't
--Keep track of things done in current Session
+-getQuestions heeft title nodig
 -make manifest
 -(Security headers)
 -css :'(

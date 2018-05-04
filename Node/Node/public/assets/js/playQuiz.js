@@ -2,7 +2,9 @@ let questions;
 let currentQuestion = 0;
 let answers = [];
 let quizID = 1;
+let quizName = "Quizeroni maccaroni";
 let userID = 1;
+console.log(typeof sessionStorage.getItem("sessionQuizzesDone"));
 function handleFormSubmit(e) {
   e.preventDefault();
   var answer = e.target.value;
@@ -18,6 +20,9 @@ function handleFormSubmit(e) {
           data: {userID: userID, quizID: quizID, answers: JSON.stringify(answers)}
       }).done(function(data, textStatus, jqXHR){
           data = JSON.parse(data);
+          let sessionQuizzesDone = (JSON.parse(sessionStorage.getItem("sessionQuizzesDone")) || []);
+          sessionQuizzesDone.push(quizName);
+          sessionStorage.setItem("sessionQuizzesDone", JSON.stringify(sessionQuizzesDone));
           window.location.href = window.location.href.substring(0,window.location.href.lastIndexOf("quiz.html")) + "quizEnd.html?quiz=" + quizID
               + "&score=" + data.score + "&avgScore=" + data.avgScore;
       }).fail(function(jqXHR, textStatus, errorThrown){
@@ -47,13 +52,15 @@ function getQuestions(quizID){
         console.log(data);
         questions = JSON.parse(data);
         fillInNewQuestion(questions[currentQuestion]);
+        $('#quizTitle').html(quizName);
     }).fail(function(jqXHR, textStatus, errorThrown){
         console.error(errorThrown);
         if(db.dbAvailable()){
             db.getQuestionsForQuiz(parseInt(quizID))
                 .then(qs=>questions=qs)
                 .then(_=>fillInNewQuestion(questions[currentQuestion]))
-                .catch(err=>console.error(err))
+                .catch(err=>console.error(err));
+            $('#quizTitle').html(quizName);
         }else{
             $('#question').html("Something went wrong, try again later...")
         }

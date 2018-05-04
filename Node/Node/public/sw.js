@@ -16,15 +16,17 @@ self.addEventListener('install', function (event) {
                 'assets/js/home.js',
                 'assets/js/makeQuiz.js',
                 'assets/js/indexedDB.js',
+                'assets/js/stats.js',
                 'index.html',
                 'makeQuiz.html',
-                'quiz.html'
+                'quiz.html',
+                'stats.html'
             ])
         })
     )
 });
 
-self.addEventListener('fetch', function (event) {
+/*self.addEventListener('fetch', function (event) {
     //console.log("SW fetch: ", event.request);
     if(!(event.request.url.indexOf('getAnyQuiz') > -1)){
         event.respondWith(
@@ -39,7 +41,7 @@ self.addEventListener('fetch', function (event) {
         )
     }
 
-});
+});*/
 
 self.addEventListener('activate', function (event) {
     console.log("SW activate");

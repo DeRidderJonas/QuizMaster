@@ -63,7 +63,10 @@ function handleSubmit(e) {
         if(db.dbAvailable()){
             db.newQuiz(quiz);
         }
-    })
+    });
+    let sessionQuizzesMade = JSON.parse(sessionStorage.getItem("sessionQuizzesMade")) || [];
+    sessionQuizzesMade.push(quiz.title);
+    sessionStorage.setItem("sessionQuizzesMade", JSON.stringify(sessionQuizzesMade));
 }
 
 function fillInOfflineMadeQuizzes() {
