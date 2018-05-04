@@ -1,5 +1,5 @@
 To fix:
 
--Service worker doesn't cache anything?
+-Service worker caches stuff but when i try to open the site on a new browser window, nothing
 -Keep track of things done in current Session
 -css :'(
