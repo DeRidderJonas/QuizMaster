@@ -1,9 +1,8 @@
 To fix:
 
--Service worker caches stuff but when i try to open the site on a new browser window, sometimes nothing
+-Service Workes caches /getAnyQuizes
 -Keep track of things done in current Session
 -make manifest
 -hi-fi wireframes?
 -(Security headers)
--(use JSON_schema)
 -css :'(
