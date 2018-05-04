@@ -1,6 +1,37 @@
 var express = require('express');
 var router = express.Router();
 let fs = require("fs");
+const Ajv = require("Ajv");
+let ajv = new Ajv();
+const JSONSchemaQuiz = {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "id":"quizSchema", //TODO change id,
+    "title":"Quiz",
+    "description":"Quiz",
+    "type":"object",
+    "properties":{
+        "id":{"type": "number"},
+        "title":{"type":"string"},
+        "description":{"type":"string"},
+        "questions":{
+            "type":"array",
+            "items": [{
+                "type":"object",
+                "properties":{
+                    "question":{"type":"string"},
+                    "rightAnswer":{"type":"string"},
+                    "wrongAnswer1": {"type":"string"},
+                    "wrongAnswer2": {"type":"string"},
+                    "wrongAnswer3": {"type":"string"},
+                }
+            }]
+        },
+        "avgScore":{"type":"number"},
+        "amountPlayed":{"type":"number"}
+    },
+    "required":["id","title","questions"]
+};
+var validate = ajv.compile(JSONSchemaQuiz);
 const Quiz = require('./../Shared-javascript/Quiz');
 /*const mysql = require("mysql");
 const connection = mysql.createConnection({
@@ -29,6 +60,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/getAnyQuizes', function (req, res) {
+    console.log("get any quizes");
     readQuizzes()
         .then(function (quizzesDB) {
             let quizIDs = [];
@@ -38,8 +70,11 @@ router.get('/getAnyQuizes', function (req, res) {
             }
             let quizzes = [];
             for (let i=0; i < amountOfQuizzes; i++){
-                quizzes.push(quizzesDB[quizIDs[i]]);
+                if(validate(quizzesDB[quizIDs[i]])){
+                    quizzes.push(quizzesDB[quizIDs[i]]);
+                }
             }
+
             res.json(JSON.stringify(quizzes));
         })
         .catch(err=>console.error(err));
@@ -71,7 +106,7 @@ router.post('/makeQuiz', function (req, res, next) {
     readQuizzes().then(function (quizzesDB) {
         quiz.id = quizzesDB.length;
         quizzesDB.push(quiz);
-        fs.writeFile('../routes/quizzes.json', JSON.stringify(quizzesDB), function (err) {
+        fs.writeFile('./routes/quizzes.json', JSON.stringify(quizzesDB), function (err) {
             if(err)console.log(err);
         })
     }).catch(err=>console.error(err))
@@ -204,9 +239,11 @@ router.post('/getUserScores', function (req, res) {
 });
 
 function readQuizzes() {
+    console.log("reading quizzes");
     return new Promise(function (s, f) {
-        fs.readFile('../routes/quizzes.json', 'utf-8', function (err, data) {
+        fs.readFile('routes\\quizzes.json', 'utf-8', function (err, data) {
             if(err)f(err);
+            //s(data)
             s(JSON.parse(data))
         })
     })
@@ -223,8 +260,9 @@ function updateQuiz(quizID, fields, newValues) {
             for(let i=0;i<fields.length;i++){
                 quizzesDB[quizID][fields[i]] = newValues[i];
             }
-            fs.writeFile('../routes/quizzes.json', JSON.stringify(quizzesDB), function (err) {
-                if(err)console.log(err);
+            console.log("writing quiz");
+            fs.writeFile('.\\routes\\quizzes.json', JSON.stringify(quizzesDB), function (err) {
+                if(err)console.log("updating",err);
             })
         })
         .catch(err=>console.error(err))
