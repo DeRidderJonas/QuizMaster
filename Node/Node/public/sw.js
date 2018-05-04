@@ -15,6 +15,7 @@ self.addEventListener('install', function (event) {
                 'assets/js/endQuiz.js',
                 'assets/js/home.js',
                 'assets/js/makeQuiz.js',
+                'assets/js/indexedDB.js',
                 'index.html',
                 'makeQuiz.html',
                 'quiz.html'
@@ -25,16 +26,19 @@ self.addEventListener('install', function (event) {
 
 self.addEventListener('fetch', function (event) {
     //console.log("SW fetch: ", event.request);
-    event.respondWith(
-        caches.match(event.request).then(function (res) {
-            return res || fetch(event.request).then(function (response) {
-                return caches.open('v1').then(function (cache) {
-                    cache.put(event.request, response.clone());
-                    return response;
+    if(!(event.request.url.indexOf('getAnyQuiz') > -1)){
+        event.respondWith(
+            caches.match(event.request).then(function (res) {
+                return res || fetch(event.request).then(function (response) {
+                    return caches.open('v1').then(function (cache) {
+                        cache.put(event.request, response.clone());
+                        return response;
+                    })
                 })
             })
-        })
-    )
+        )
+    }
+
 });
 
 self.addEventListener('activate', function (event) {

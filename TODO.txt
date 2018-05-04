@@ -1,8 +1,7 @@
 To fix:
 
--Service Workes caches /getAnyQuizes
+-Service Workes caches /getAnyQuizes tough it shouldn't
 -Keep track of things done in current Session
 -make manifest
--hi-fi wireframes?
 -(Security headers)
 -css :'(
