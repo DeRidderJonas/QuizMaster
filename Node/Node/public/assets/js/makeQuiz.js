@@ -1,5 +1,6 @@
 
-var currentAmountOfQuestions = 0;
+let currentAmountOfQuestions = 0;
+let offlineMadeQuizzes = [];
 
 function addQuestion(e) {
   if(e){
@@ -59,12 +60,46 @@ function handleSubmit(e) {
         console.log(data);
     }).catch(function (err){
         console.log(err);
+        if(db.dbAvailable()){
+            db.newQuiz(quiz);
+        }
     })
+}
 
+function fillInOfflineMadeQuizzes() {
+    $('#madeOffline').html("");
+
+    while(!db.dbAvailable()){}
+    db.getNewQuizzes().then(quizzes=>{
+        quizzes.forEach(quiz=>{
+            $('#madeOffline').append(`<h2>${quiz.title}(${quiz.description})</h2>`);
+            offlineMadeQuizzes.push(quiz);
+            console.log(quiz);
+        });
+        $('#madeOffline').append("<button class=\"pushOfflineMade\">Send quizzes to server!</button>")
+    });
+
+}
+
+function pushOfflineMade() {
+    console.log("pushing offline made quizzes");
+    offlineMadeQuizzes.forEach(quiz=>{
+        $.ajax({
+            url : '/makeQuiz',
+            data: {"quiz": JSON.stringify(quiz)},
+            type: "post"
+        }).done(function (data) {
+            console.log(data);
+        }).catch(function (err){
+            console.log(err);
+        })
+    })
 }
 
 $(document).ready(function(){
   addQuestion();
+  setTimeout(fillInOfflineMadeQuizzes, 50);
   $('#addQuestion').on('click', addQuestion);
   $('#submitButton').on('click', handleSubmit);
+  $('#madeOffline').on('click','.pushOfflineMade', pushOfflineMade);
 });

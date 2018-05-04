@@ -2,5 +2,4 @@ To fix:
 
 -Service worker caches stuff but when i try to open the site on a new browser window, nothing
 -Keep track of things done in current Session
--Put made quiz in indexedDB if not connected to server, put in server db when connected
 -css :'(

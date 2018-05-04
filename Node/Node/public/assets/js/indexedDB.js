@@ -12,6 +12,7 @@ const db = (function () {
 
     const quizDB = 'quizDB';
     const quizName = 'quiz';
+    const makeQuiz = 'makeQuiz';
     let request = window.indexedDB.open(quizDB,1);
     let db = null;
 
@@ -20,7 +21,8 @@ const db = (function () {
     };
     request.onupgradeneeded = function (e) {
         db = e.target.result;
-        let os = db.createObjectStore(quizName, {keyPath: 'id'});
+        db.createObjectStore(quizName, {keyPath: 'id'});
+        db.createObjectStore(makeQuiz, {keyPath: 'id'});
         console.log("db created");
     };
     request.onsuccess = function (e) {
@@ -116,7 +118,47 @@ const db = (function () {
             return amount < maxAmountQuizzesInIndexedDB;
         });
     }
+
+    function newQuiz(newQuiz) {
+        try {
+            console.log("adding new quiz to 'cache'", newQuiz);
+            PromsiseToCountNewQuizzes().then(amount=>{
+                newQuiz.id = amount;
+                let trans = db.transaction([makeQuiz], 'readwrite');
+                let os = trans.objectStore(makeQuiz);
+                os.add(newQuiz);
+            })
+        }catch (err){
+            console.error(err);
+        }
+    }
+
+    function PromsiseToCountNewQuizzes() {
+        return new Promise(function (s, f) {
+            let trans = db.transaction(makeQuiz, 'readwrite');
+            let os = trans.objectStore(makeQuiz);
+            let request = os.count();
+            request.onsuccess = function (e) {
+                s(e.target.result);
+            };
+            request.onerror = f;
+        })
+    }
+
+    function PromiseToGetNewQuizzes() {
+        return new Promise(function (s, f) {
+            let trans = db.transaction([makeQuiz], 'readwrite');
+            let os = trans.objectStore(makeQuiz);
+            console.log(os);
+            let request = os.getAll();
+            request.onsuccess = function (e) {
+                s(e.target.result);
+            };
+            request.onerror = f;
+        })
+    }
+
     return {addQuiz, getQuiz, getAmountOfQuizzes: promiseToCount,
         canAddMoreQuizzes, getMultipleQuizzes,getQuestionsForQuiz,
-        dbAvailable};
+        dbAvailable, newQuiz, getNewQuizzes: PromiseToGetNewQuizzes};
 })();
