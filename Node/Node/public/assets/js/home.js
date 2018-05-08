@@ -7,6 +7,8 @@ function getQuizes(){
     }).done(function (data) {
         data = JSON.parse(data);
         FillInQuizzes(data);
+        stuckCounter = 0;
+        while(!db.dbAvailable() && stuckCounter < 1000){stuckCounter++}
         if(db.dbAvailable()){
             db.canAddMoreQuizzes().then(function (roomAvailable) {
                 if(roomAvailable){
@@ -27,7 +29,7 @@ function getQuizes(){
 function FillInQuizzes(quizzes) {
     quizzes.forEach(quiz =>{
         let html = `<section class="quiz">
-                      <img src="assets/images/${quiz.imgUrl}" title="QuizIcon" alt="QuizIcon">
+                      <img src="assets/images/question" title="QuizIcon" alt="QuizIcon">
                       <h1>${quiz.title}</h1>
                       <p>${quiz.description}</p>
                       <a href="quiz.html?quiz=${quiz.id}" class="continue"><img src="assets/images/arrow.png"></a>

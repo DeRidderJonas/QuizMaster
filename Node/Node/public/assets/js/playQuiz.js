@@ -2,7 +2,7 @@ let questions;
 let currentQuestion = 0;
 let answers = [];
 let quizID = 1;
-let quizName = "Quizeroni maccaroni";
+let quizTitle = "Quizeroni maccaroni";
 let userID = 1;
 console.log(typeof sessionStorage.getItem("sessionQuizzesDone"));
 function handleFormSubmit(e) {
@@ -29,7 +29,7 @@ function handleFormSubmit(e) {
               sessionAvgScore = (sessionAvgScore + (data.score)/questions.length*100)/2
           }
           console.log("avgScoreAfter", sessionAvgScore);
-          sessionQuizzesDone.push(quizName);
+          sessionQuizzesDone.push(quizTitle);
           sessionStorage.setItem("sessionQuizzesDone", JSON.stringify(sessionQuizzesDone));
           sessionStorage.setItem("sessionAvgScore", JSON.stringify(sessionAvgScore));
           window.location.href = window.location.href.substring(0,window.location.href.lastIndexOf("quiz.html")) + "quizEnd.html?quiz=" + quizID
@@ -58,10 +58,11 @@ function getQuestions(quizID){
         data: {quizID: quizID},
         dataType: "json"
     }).done(function (data) {
-        console.log(data);
-        questions = JSON.parse(data);
+        data = JSON.parse(data);
+        questions = data.questions;
+        quizTitle = data.title;
         fillInNewQuestion(questions[currentQuestion]);
-        $('#quizTitle').html(quizName);
+        $('#quizTitle').html(quizTitle);
     }).fail(function(jqXHR, textStatus, errorThrown){
         console.error(errorThrown);
         if(db.dbAvailable()){
@@ -69,7 +70,8 @@ function getQuestions(quizID){
                 .then(qs=>questions=qs)
                 .then(_=>fillInNewQuestion(questions[currentQuestion]))
                 .catch(err=>console.error(err));
-            $('#quizTitle').html(quizName);
+            db.getQuizTitle(quizID).then(title=>quizTitle=title);
+            $('#quizTitle').html(quizTitle);
         }else{
             $('#question').html("Something went wrong, try again later...")
         }

@@ -103,7 +103,7 @@ const db = (function () {
 
     function range(amount){
         let numbers = [];
-        for(let i = 1; i < amount+1; i++){
+        for(let i = 0; i < amount+1; i++){
             numbers.push(i);
         }
         return numbers;
@@ -158,7 +158,13 @@ const db = (function () {
         })
     }
 
+    function PromiseToGetQuizTitle(quizID){
+        return promiseToGet(quizID)
+            .then(q=>q.title)
+    }
+
     return {addQuiz, getQuiz, getAmountOfQuizzes: promiseToCount,
         canAddMoreQuizzes, getMultipleQuizzes,getQuestionsForQuiz,
-        dbAvailable, newQuiz, getNewQuizzes: PromiseToGetNewQuizzes};
+        dbAvailable, newQuiz, getNewQuizzes: PromiseToGetNewQuizzes,
+        getQuizTitle:PromiseToGetQuizTitle};
 })();

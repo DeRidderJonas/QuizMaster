@@ -1,6 +1,5 @@
 To fix:
 
--getQuestions heeft title nodig
 -make manifest
 -(Security headers)
 -css :'(

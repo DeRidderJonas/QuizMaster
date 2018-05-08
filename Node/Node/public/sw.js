@@ -15,8 +15,9 @@ self.addEventListener('install', function (event) {
                 'assets/js/endQuiz.js',
                 'assets/js/home.js',
                 'assets/js/makeQuiz.js',
-                'assets/js/indexedDB.js',
+                'assets/js/indexDB.js',
                 'assets/js/stats.js',
+                'assets/js/Quiz.js',
                 'index.html',
                 'makeQuiz.html',
                 'quiz.html',
@@ -40,7 +41,6 @@ self.addEventListener('fetch', function (event) {
             })
         )
     }
-
 });
 
 self.addEventListener('activate', function (event) {

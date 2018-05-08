@@ -78,8 +78,12 @@ router.post('/getQuestionsForQuiz', function (req, res) {
     let quizID = req.body.quizID;
     getQuestionsForQuiz(quizID)
         .then(shuffleQuestions)
-        .then(q=>res.json(JSON.stringify(q)))
-        .catch(err=>console.error(err))
+        .then(questions=>{
+            getQuizTitle(quizID)
+                .then(title=>{return {"questions":questions, "title":title}})
+                .then(q=>res.json(JSON.stringify(q)))
+                .catch(err=>console.error(err))
+        }).catch(err=>console.error(err))
 });
 
 function shuffleQuestions(questions){
@@ -169,6 +173,12 @@ function getAvgScoreAndAmountPlayedForQuiz(quizID) {
         console.log(q);
         return {"avgScore":q.avgScore, "amountPlayed":q.amountPlayed}
     }).catch(err=>console.error(err))
+}
+
+function getQuizTitle(quizID){
+    return getQuizById(quizID)
+        .then(q=>q.title)
+        .catch(err=>console.error(err))
 }
 
 module.exports = router;
