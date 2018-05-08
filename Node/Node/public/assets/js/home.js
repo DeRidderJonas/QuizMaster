@@ -28,13 +28,15 @@ function getQuizes(){
 
 function FillInQuizzes(quizzes) {
     quizzes.forEach(quiz =>{
-        let html = `<section class="quiz">
+        if(quiz !== null && quiz !== undefined){
+            let html = `<section class="quiz">
                       <img src="assets/images/question" title="QuizIcon" alt="QuizIcon">
                       <h1>${quiz.title}</h1>
                       <p>${quiz.description}</p>
                       <a href="quiz.html?quiz=${quiz.id}" class="continue"><img src="assets/images/arrow.png"></a>
                     </section>`;
-        $('#quizzes').append(html);
+            $('#quizzes').append(html);
+        }
     });
 }
 
