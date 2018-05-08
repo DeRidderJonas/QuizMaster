@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express();
-let fs = require("fs");
+const fs = require("fs");
 const Ajv = require("Ajv");
+const quizzes = require('./quizzes.js');
 let ajv = new Ajv();
 const JSONSchemaQuiz = {
     "$schema": "http://json-schema.org/draft-07/schema#",
@@ -69,7 +70,9 @@ router.post('/makeQuiz', function (req, res, next) {
         quiz.id = quizzesDB.length;
         quizzesDB.push(quiz);
         fs.writeFile('./routes/quizzes.json', JSON.stringify(quizzesDB), function (err) {
-            if(err)console.log(err);
+            if(err){console.log(err)}else{
+                res.send(JSON.stringify({"status": "OK"}));
+            }
         })
     }).catch(err=>console.error(err))
 });

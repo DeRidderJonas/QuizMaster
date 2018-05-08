@@ -92,7 +92,11 @@ function pushOfflineMade() {
             data: {"quiz": JSON.stringify(quiz)},
             type: "post"
         }).done(function (data) {
+            data = JSON.parse(data);
             console.log(data);
+            if(data.status === "OK"){
+                db.removeNewQuizzes();
+            }
         }).catch(function (err){
             console.log(err);
         })

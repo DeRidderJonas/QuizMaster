@@ -158,6 +158,16 @@ const db = (function () {
         })
     }
 
+    function removeNewQuizzes() {
+        console.log("removing all offline made quizzes");
+        let trans = db.transaction([makeQuiz], 'readwrite');
+        let os = trans.objectStore(makeQuiz);
+        let request = os.clear(); //this doesn't do anything
+        request.onsuccess = function (e) {
+            console.log("newQuizzes cleared");
+        }
+    }
+
     function PromiseToGetQuizTitle(quizID){
         return promiseToGet(quizID)
             .then(q=>q.title)
@@ -166,5 +176,5 @@ const db = (function () {
     return {addQuiz, getQuiz, getAmountOfQuizzes: promiseToCount,
         canAddMoreQuizzes, getMultipleQuizzes,getQuestionsForQuiz,
         dbAvailable, newQuiz, getNewQuizzes: PromiseToGetNewQuizzes,
-        getQuizTitle:PromiseToGetQuizTitle};
+        getQuizTitle:PromiseToGetQuizTitle, removeNewQuizzes};
 })();
