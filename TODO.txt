@@ -1,5 +1,5 @@
 To fix:
 
--make manifest
--(Security headers)
--css :'(
+-make manifest and test on phone
+-(Security headers) -> send mail to koen
+-css :'(	try out some bootstrap
