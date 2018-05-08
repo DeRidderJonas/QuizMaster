@@ -26,7 +26,7 @@ self.addEventListener('install', function (event) {
     )
 });
 
-/*self.addEventListener('fetch', function (event) {
+self.addEventListener('fetch', function (event) {
     //console.log("SW fetch: ", event.request);
     if(!(event.request.url.indexOf('getAnyQuiz') > -1)){
         event.respondWith(
@@ -41,7 +41,7 @@ self.addEventListener('install', function (event) {
         )
     }
 
-});*/
+});
 
 self.addEventListener('activate', function (event) {
     console.log("SW activate");

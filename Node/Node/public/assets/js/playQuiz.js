@@ -21,8 +21,17 @@ function handleFormSubmit(e) {
       }).done(function(data, textStatus, jqXHR){
           data = JSON.parse(data);
           let sessionQuizzesDone = (JSON.parse(sessionStorage.getItem("sessionQuizzesDone")) || []);
+          let sessionAvgScore = (JSON.parse(sessionStorage.getItem("sessionAvgScore")) || 0);
+          console.log("avgScoreBefore", sessionAvgScore, "questions:", questions, "data.score", data.score);
+          if(sessionQuizzesDone.length === 0){
+              sessionAvgScore = (data.score/questions.length*100);
+          }else{
+              sessionAvgScore = (sessionAvgScore + (data.score)/questions.length*100)/2
+          }
+          console.log("avgScoreAfter", sessionAvgScore);
           sessionQuizzesDone.push(quizName);
           sessionStorage.setItem("sessionQuizzesDone", JSON.stringify(sessionQuizzesDone));
+          sessionStorage.setItem("sessionAvgScore", JSON.stringify(sessionAvgScore));
           window.location.href = window.location.href.substring(0,window.location.href.lastIndexOf("quiz.html")) + "quizEnd.html?quiz=" + quizID
               + "&score=" + data.score + "&avgScore=" + data.avgScore;
       }).fail(function(jqXHR, textStatus, errorThrown){
