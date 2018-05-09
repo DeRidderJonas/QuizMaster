@@ -33,7 +33,7 @@ self.addEventListener('fetch', function (event) { //works offline but updated fi
     if(!(event.request.url.indexOf('getAnyQuiz') > -1) && !(event.request.url.indexOf('getQuestionsForQuiz') > -1)){
         event.respondWith(
             caches.match(event.request).then(function (res) {
-                if(res){
+                /*if(res){
                     fetch(event.request).then(function (response) {
                         caches.open('v1').then(function (cache) {
                             cache.put(event.request, response);
@@ -45,6 +45,15 @@ self.addEventListener('fetch', function (event) { //works offline but updated fi
                         cache.put(event.request, response.clone());
                         return response;
                     })
+                })*/
+                return fetch(event.request).then(function (response) {
+                    return caches.open('v1').then(function (cache) {
+                        cache.put(event.request, response.clone());
+                        return response;
+                    })
+                }).catch(function (err) {
+                    if(err)console.log(err);
+                    return res;
                 })
             })
         )

@@ -2,6 +2,5 @@ To fix:
 
 -make manifest and test on phone
 -look for a json db npm
--make sw update files
 -(Security headers) -> send mail to koen
 -css :'(	try out some bootstrap
