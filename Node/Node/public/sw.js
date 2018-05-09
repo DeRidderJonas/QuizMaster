@@ -28,10 +28,9 @@ self.addEventListener('install', function (event) {
     )
 });
 
-self.addEventListener('fetch', function (event) { //works offline but updated files are used second request
-    console.log("SW fetch: ", event.request);
-
-    if(event.request.method === "GET" ){
+self.addEventListener('fetch', function (event) {
+    //console.log("SW fetch: ", event.request);
+    if (event.request.method === "GET") {
         event.respondWith(
             caches.match(event.request).then(function (res) {
                 /*if(res){
@@ -53,7 +52,7 @@ self.addEventListener('fetch', function (event) { //works offline but updated fi
                         return response;
                     })
                 }).catch(function (err) {
-                    if(err)console.log(err);
+                    if (err) console.log(err);
                     return res;
                 })
             })
@@ -67,7 +66,7 @@ self.addEventListener('activate', function (event) {
     event.waitUntil(
         caches.keys().then(function (keyList) {
             return Promise.all(keyList.map(function (key) {
-                if(cacheWhitelist.indexOf(key) === -1){
+                if (cacheWhitelist.indexOf(key) === -1) {
                     return caches.delete(key);
                 }
             }))

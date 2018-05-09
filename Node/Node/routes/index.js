@@ -1,9 +1,8 @@
-var express = require('express');
-var router = express();
+const express = require('express');
+const router = express();
 const fs = require("fs");
 const Ajv = require("Ajv");
-const quizzes = require('./quizzes.js');
-let ajv = new Ajv();
+const ajv = new Ajv();
 const JSONSchemaQuiz = {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "id":"quizSchema", //TODO change id,
@@ -32,7 +31,7 @@ const JSONSchemaQuiz = {
     },
     "required":["id","title","questions"]
 };
-var validate = ajv.compile(JSONSchemaQuiz);
+let validate = ajv.compile(JSONSchemaQuiz);
 const Quiz = require('./../Shared-javascript/Quiz');
 
 /* GET home page. */
@@ -51,11 +50,8 @@ router.post('/getAnyQuizes', function (req, res) {
             }
             let quizzes = [];
             for (let i=0; i < amountOfQuizzes; i++){
-                if(validate(quizzesDB[quizIDs[i]])){
-                    quizzes.push(quizzesDB[quizIDs[i]]);
-                }
+                quizzes.push(quizzesDB[quizIDs[i]]);
             }
-
             res.json(JSON.stringify(quizzes));
         })
         .catch(err=>console.error(err));
@@ -70,18 +66,20 @@ router.post('/searchForQuiz', function (req, res) {
 });
 
 router.post('/makeQuiz', function (req, res, next) {
-    console.log(req.body.quiz);
     let quizJson = req.body.quiz;
     let quizObj = JSON.parse(quizJson);
     let quiz = new Quiz.Quiz(0,quizObj.title, quizObj.description, quizObj.questions, 0);
     readQuizzes().then(function (quizzesDB) {
         quiz.id = quizzesDB.length;
-        quizzesDB.push(quiz);
-        fs.writeFile('./routes/quizzes.json', JSON.stringify(quizzesDB), function (err) {
-            if(err){console.log(err)}else{
-                res.send(JSON.stringify({"status": "OK"}));
-            }
-        })
+        if(validate(quiz)){
+            quizzesDB.push(quiz);
+            fs.writeFile('./routes/quizzes.json', JSON.stringify(quizzesDB), function (err) {
+                if(err){console.log(err)}else{
+                    console.log("successfully made quiz: ", quiz.title);
+                    res.send(JSON.stringify({"status": "OK"}));
+                }
+            })
+        }
     }).catch(err=>console.error(err))
 });
 
@@ -119,9 +117,7 @@ function shuffleQuestions(questions){
     return shuffled;
 }
 
-
 router.post('/handleAnswers', function (req, res) {
-    //let userID = req.body.userID;
     let quizID = req.body.quizID;
     let answers = JSON.parse(req.body.answers);
     let score = 0;
@@ -132,9 +128,7 @@ router.post('/handleAnswers', function (req, res) {
             for(let i=0; i<correctAnswers.length; i++){
                 if(correctAnswers[i] === answers[i])score++;
             }
-            console.log("score",score);
             getAvgScoreAndAmountPlayedForQuiz(quizID).then(quizDetail=>{
-                console.log(quizDetail);
                 let newAvg = Math.round(((quizDetail.avgScore*quizDetail.amountPlayed)+score)/(quizDetail.amountPlayed+1) * 100) / 100;
                 updateQuiz(quizID,["avgScore","amountPlayed"],[newAvg,(quizDetail.amountPlayed+1)]);
                 res.send(JSON.stringify({"score":score, "avgScore":newAvg}))
@@ -142,14 +136,13 @@ router.post('/handleAnswers', function (req, res) {
         }).catch(err=>console.error(err));
 });
 
-
 function readQuizzes() {
     console.log("reading quizzes");
     return new Promise(function (s, f) {
         fs.readFile('routes\\quizzes.json', 'utf-8', function (err, data) {
             if(err)f(err);
             //s(data)
-            s(JSON.parse(data))
+            s(JSON.parse(data).filter(q=>validate(q)))
         })
     })
 }
@@ -165,7 +158,6 @@ function updateQuiz(quizID, fields, newValues) {
             for(let i=0;i<fields.length;i++){
                 quizzesDB[quizID][fields[i]] = newValues[i];
             }
-            console.log("writing quiz");
             fs.writeFile('.\\routes\\quizzes.json', JSON.stringify(quizzesDB), function (err) {
                 if(err)console.log("updating",err);
             })
@@ -181,7 +173,6 @@ function getQuestionsForQuiz(quizID) {
 
 function getAvgScoreAndAmountPlayedForQuiz(quizID) {
     return getQuizById(quizID).then(q=>{
-        console.log(q);
         return {"avgScore":q.avgScore, "amountPlayed":q.amountPlayed}
     }).catch(err=>console.error(err))
 }

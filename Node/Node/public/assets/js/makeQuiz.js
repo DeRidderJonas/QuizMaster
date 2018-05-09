@@ -1,14 +1,13 @@
-
 let currentAmountOfQuestions = 0;
 let offlineMadeQuizzes = [];
 
 function addQuestion(e) {
-  if(e){
-    e.preventDefault();
-  }
-  currentAmountOfQuestions++;
-  $('input[name=amountOfQuestions]').val(currentAmountOfQuestions);
-  var html = `
+    if (e) {
+        e.preventDefault();
+    }
+    currentAmountOfQuestions++;
+    $('input[name=amountOfQuestions]').val(currentAmountOfQuestions);
+    var html = `
   <fieldset>
     <label for="question${currentAmountOfQuestions}">Question ${currentAmountOfQuestions}</label>
     <input type="text" name="question${currentAmountOfQuestions}" id="question${currentAmountOfQuestions}" class="Titlequestion">
@@ -28,18 +27,18 @@ function addQuestion(e) {
     </section>
   </fieldset>
   `
-  $('#questions').append(html);
+    $('#questions').append(html);
 }
 
 function handleSubmit(e) {
     let questions = [];
-    for (let i = 1; i < currentAmountOfQuestions+1; i++){
+    for (let i = 1; i < currentAmountOfQuestions + 1; i++) {
         let newQuestion = {
-            "question": document.getElementById("question"+i).value,
-            "rightAnswer": document.getElementById("answer"+i+"_1").value,
-            "wrongAnswer1": document.getElementById("answer"+i+"_2").value,
-            "wrongAnswer2": document.getElementById("answer"+i+"_3").value,
-            "wrongAnswer3": document.getElementById("answer"+i+"_4").value,
+            "question": document.getElementById("question" + i).value,
+            "rightAnswer": document.getElementById("answer" + i + "_1").value,
+            "wrongAnswer1": document.getElementById("answer" + i + "_2").value,
+            "wrongAnswer2": document.getElementById("answer" + i + "_3").value,
+            "wrongAnswer3": document.getElementById("answer" + i + "_4").value,
         };
         questions.push(newQuestion)
     }
@@ -49,18 +48,16 @@ function handleSubmit(e) {
         "questions": questions
     };
     console.log(JSON.stringify(quiz));
-    // fetch("http://localhost:3000/makeQuiz", {
-    //     body: {"quiz": JSON.stringify(quiz)}, method: "POST", mode:'no-cors'
-    // }).catch(function (err) {console.error(err);})
     $.ajax({
-        url : '/makeQuiz',
+        url: '/makeQuiz',
         data: {"quiz": JSON.stringify(quiz)},
         type: "post"
     }).done(function (data) {
         console.log(data);
-    }).catch(function (err){
+        if (JSON.parse(data).status === "OK") $('#info').html("Your quiz was successfully added.")
+    }).catch(function (err) {
         console.log(err);
-        if(db.dbAvailable()){
+        if (db.dbAvailable()) {
             db.newQuiz(quiz);
         }
     });
@@ -72,9 +69,10 @@ function handleSubmit(e) {
 function fillInOfflineMadeQuizzes() {
     $('#madeOffline').html("");
 
-    while(!db.dbAvailable()){}
-    db.getNewQuizzes().then(quizzes=>{
-        quizzes.forEach(quiz=>{
+    while (!db.dbAvailable()) {
+    }
+    db.getNewQuizzes().then(quizzes => {
+        quizzes.forEach(quiz => {
             $('#madeOffline').append(`<h2>${quiz.title}(${quiz.description})</h2>`);
             offlineMadeQuizzes.push(quiz);
             console.log(quiz);
@@ -86,27 +84,27 @@ function fillInOfflineMadeQuizzes() {
 
 function pushOfflineMade() {
     console.log("pushing offline made quizzes");
-    offlineMadeQuizzes.forEach(quiz=>{
+    offlineMadeQuizzes.forEach(quiz => {
         $.ajax({
-            url : '/makeQuiz',
+            url: '/makeQuiz',
             data: {"quiz": JSON.stringify(quiz)},
             type: "post"
         }).done(function (data) {
             data = JSON.parse(data);
             console.log(data);
-            if(data.status === "OK"){
+            if (data.status === "OK") {
                 db.removeNewQuizzes();
             }
-        }).catch(function (err){
+        }).catch(function (err) {
             console.log(err);
         })
     })
 }
 
-$(document).ready(function(){
-  addQuestion();
-  setTimeout(fillInOfflineMadeQuizzes, 50);
-  $('#addQuestion').on('click', addQuestion);
-  $('#submitButton').on('click', handleSubmit);
-  $('#madeOffline').on('click','.pushOfflineMade', pushOfflineMade);
+$(document).ready(function () {
+    addQuestion();
+    setTimeout(fillInOfflineMadeQuizzes, 50);
+    $('#addQuestion').on('click', addQuestion);
+    $('#submitButton').on('click', handleSubmit);
+    $('#madeOffline').on('click', '.pushOfflineMade', pushOfflineMade);
 });

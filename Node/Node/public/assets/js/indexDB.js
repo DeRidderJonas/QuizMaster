@@ -1,10 +1,10 @@
 const db = (function () {
     window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
 
-    if(!window.indexedDB){
+    if (!window.indexedDB) {
         console.log('no indexed db');
         return;
-    }else{
+    } else {
         console.log('indexed db recognised');
     }
 
@@ -13,11 +13,11 @@ const db = (function () {
     const quizDB = 'quizDB';
     const quizName = 'quiz';
     const makeQuiz = 'makeQuiz';
-    let request = window.indexedDB.open(quizDB,1);
+    let request = window.indexedDB.open(quizDB, 1);
     let db = null;
 
     request.onerror = function (e) {
-        console.error("something went wrong!",e);
+        console.error("something went wrong!", e);
     };
     request.onupgradeneeded = function (e) {
         db = e.target.result;
@@ -34,7 +34,7 @@ const db = (function () {
         return db !== null;
     }
 
-    function promiseToGet(key){
+    function promiseToGet(key) {
         return new Promise(function (s, f) {
             let trans = db.transaction([quizName], 'readwrite');
             let os = trans.objectStore(quizName);
@@ -58,58 +58,58 @@ const db = (function () {
         })
     }
 
-    function addQuiz(newQuiz){
+    function addQuiz(newQuiz) {
         try {
             let trans = db.transaction([quizName], 'readwrite');
             let os = trans.objectStore(quizName);
             os.add(newQuiz);
-        }catch (err){
+        } catch (err) {
             console.error(err);
         }
     }
 
-    function getQuiz(id){
-        if (id >= 0 && id < maxAmountQuizzesInIndexedDB){
+    function getQuiz(id) {
+        if (id >= 0 && id < maxAmountQuizzesInIndexedDB) {
             return promiseToGet(id);
         }
         return null;
     }
 
     function getQuestionsForQuiz(id) {
-        return getQuiz(id).then(q=>q.questions)
+        return getQuiz(id).then(q => q.questions)
             .then(shuffleQuestions)
     }
 
-    function shuffleQuestions(questions){
+    function shuffleQuestions(questions) {
         let shuffled = [];
-        questions.forEach(q=>{
+        questions.forEach(q => {
             let chosenNumbers = [];
-            let random = Math.floor(Math.random()*4);
-            for(let i=0; i<4; i++){
-                while(chosenNumbers.indexOf(random) >= 0){
-                    random = Math.floor(Math.random()*4);
+            let random = Math.floor(Math.random() * 4);
+            for (let i = 0; i < 4; i++) {
+                while (chosenNumbers.indexOf(random) >= 0) {
+                    random = Math.floor(Math.random() * 4);
                 }
                 chosenNumbers.push(random);
             }
             let shuffledQuestion = {"question": q.question};
-            shuffledQuestion["answer"+chosenNumbers[0]] = q.rightAnswer;
-            shuffledQuestion["answer"+chosenNumbers[1]] = q.wrongAnswer1;
-            shuffledQuestion["answer"+chosenNumbers[2]] = q.wrongAnswer2;
-            shuffledQuestion["answer"+chosenNumbers[3]] = q.wrongAnswer3;
+            shuffledQuestion["answer" + chosenNumbers[0]] = q.rightAnswer;
+            shuffledQuestion["answer" + chosenNumbers[1]] = q.wrongAnswer1;
+            shuffledQuestion["answer" + chosenNumbers[2]] = q.wrongAnswer2;
+            shuffledQuestion["answer" + chosenNumbers[3]] = q.wrongAnswer3;
             shuffled.push(shuffledQuestion);
         });
         return shuffled;
     }
 
-    function range(amount){
+    function range(amount) {
         let numbers = [];
-        for(let i = 0; i < amount+1; i++){
+        for (let i = 0; i < amount + 1; i++) {
             numbers.push(i);
         }
         return numbers;
     }
 
-    function getMultipleQuizzes(){
+    function getMultipleQuizzes() {
         return Promise.all(range(maxAmountQuizzesInIndexedDB).map(getQuiz));
     }
 
@@ -122,13 +122,13 @@ const db = (function () {
     function newQuiz(newQuiz) {
         try {
             console.log("adding new quiz to 'cache'", newQuiz);
-            PromsiseToCountNewQuizzes().then(amount=>{
+            PromsiseToCountNewQuizzes().then(amount => {
                 newQuiz.id = amount;
                 let trans = db.transaction([makeQuiz], 'readwrite');
                 let os = trans.objectStore(makeQuiz);
                 os.add(newQuiz);
             })
-        }catch (err){
+        } catch (err) {
             console.error(err);
         }
     }
@@ -162,19 +162,20 @@ const db = (function () {
         console.log("removing all offline made quizzes");
         let trans = db.transaction([makeQuiz], 'readwrite');
         let os = trans.objectStore(makeQuiz);
-        let request = os.clear(); //this doesn't do anything
+        let request = os.clear();
         request.onsuccess = function (e) {
             console.log("newQuizzes cleared");
         }
     }
 
-    function PromiseToGetQuizTitle(quizID){
+    function PromiseToGetQuizTitle(quizID) {
         return promiseToGet(quizID)
-            .then(q=>q.title)
+            .then(q => q.title)
     }
 
-    return {addQuiz, getQuiz, getAmountOfQuizzes: promiseToCount,
-        canAddMoreQuizzes, getMultipleQuizzes,getQuestionsForQuiz,
+    return {
+        addQuiz, canAddMoreQuizzes, getMultipleQuizzes, getQuestionsForQuiz,
         dbAvailable, newQuiz, getNewQuizzes: PromiseToGetNewQuizzes,
-        getQuizTitle:PromiseToGetQuizTitle, removeNewQuizzes};
+        getQuizTitle: PromiseToGetQuizTitle, removeNewQuizzes
+    };
 })();

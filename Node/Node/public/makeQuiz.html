@@ -11,28 +11,29 @@
     <title>Make your own quiz!</title>
 </head>
 <body>
-  <nav>
-      <a href="index.html?mode=popular">Popular</a>
-      <a href="index.html?mode=search">Search</a>
+<nav>
+    <a href="index.html?mode=popular">Popular</a>
+    <a href="index.html?mode=search">Search</a>
     <a href="makeQuiz.html">Make Quiz</a>
     <a href="stats.html">Stats</a>
-  </nav>
-  <main>
-    <form action="http://localhost:3000/makeQuiz" method="post" id="quizForm">
-      <label for="quizTitle">Quiz title:</label>
-      <input type="text" name="quizTitle" id="quizTitle">
+</nav>
+<main>
+    <span id="info"></span>
+    <form action="" id="quizForm">
+        <label for="quizTitle">Quiz title:</label>
+        <input type="text" name="quizTitle" id="quizTitle">
         <label for="quizDesc">Quiz description:</label>
         <textarea name="quizDescription" id="quizDesc" rows="2"></textarea>
-      <input type="number" name="amountOfQuestions" hidden>
-      <fieldset id="questions">
-      </fieldset>
-      <a href="#" id="addQuestion">Add another question</a>
-      <input type="button" id="submitButton" value="Submit Quiz">
+        <input type="number" name="amountOfQuestions" hidden>
+        <fieldset id="questions">
+        </fieldset>
+        <a href="#" id="addQuestion">Add another question</a>
+        <input type="button" id="submitButton" value="Submit Quiz">
     </form>
-      <section id="madeOffline"></section>
-  </main>
-  <script src="assets/js/jquery-3.1.1.min.js"></script>
-  <script src="assets/js/indexDB.js"></script>
-  <script src="assets/js/makeQuiz.js"></script>
+    <section id="madeOffline"></section>
+</main>
+<script src="assets/js/jquery-3.1.1.min.js"></script>
+<script src="assets/js/indexDB.js"></script>
+<script src="assets/js/makeQuiz.js"></script>
 </body>
 </html>
