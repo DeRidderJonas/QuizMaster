@@ -40,7 +40,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/getAnyQuizes', function (req, res) {
+router.post('/getAnyQuizes', function (req, res) {
     console.log("get any quizes");
     readQuizzes()
         .then(function (quizzesDB) {

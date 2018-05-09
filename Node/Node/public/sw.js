@@ -29,8 +29,9 @@ self.addEventListener('install', function (event) {
 });
 
 self.addEventListener('fetch', function (event) { //works offline but updated files are used second request
-    //console.log("SW fetch: ", event.request);
-    if(!(event.request.url.indexOf('getAnyQuiz') > -1) && !(event.request.url.indexOf('getQuestionsForQuiz') > -1)){
+    console.log("SW fetch: ", event.request);
+
+    if(event.request.method === "GET" ){
         event.respondWith(
             caches.match(event.request).then(function (res) {
                 /*if(res){

@@ -3,7 +3,7 @@ function getQuizes(){
     $('#quizzes').html("");
     $.ajax({
         url : '/getAnyQuizes',
-        type: "get"
+        type: "post"
     }).done(function (data) {
         data = JSON.parse(data);
         FillInQuizzes(data);
