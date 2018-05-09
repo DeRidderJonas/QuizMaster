@@ -12,6 +12,7 @@ self.addEventListener('install', function (event) {
                 'assets/css/shared.css',
                 'assets/images/arrow.png',
                 'assets/images/back-arrow.png',
+                'assets/images/favIcon.png',
                 'assets/js/endQuiz.js',
                 'assets/js/home.js',
                 'assets/js/makeQuiz.js',
