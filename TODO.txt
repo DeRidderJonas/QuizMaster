@@ -1,6 +1,6 @@
 To fix:
 
 -make manifest and test on phone
--look for a json db npm
+-(look for a json db npm)
 -(Security headers) -> send mail to koen
 -css :'(	try out some bootstrap
