@@ -61,6 +61,14 @@ router.get('/getAnyQuizes', function (req, res) {
         .catch(err=>console.error(err));
 });
 
+router.post('/searchForQuiz', function (req, res) {
+    let criteria = req.body.searchCriteria;
+    console.log("searching for quizzes with criteria: ", criteria);
+    readQuizzes()
+        .then(quizzes => quizzes.filter(q=>q.title.indexOf(criteria) > -1))
+        .then(quizzes => res.json(JSON.stringify(quizzes)));
+});
+
 router.post('/makeQuiz', function (req, res, next) {
     console.log(req.body.quiz);
     let quizJson = req.body.quiz;

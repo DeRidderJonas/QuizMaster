@@ -7,7 +7,7 @@ function fillInSessionStats(){
     console.log(typeof sessionQuizzesDone);
     $('#completedQuizes').html(sessionQuizzesDone.join(","));
     $('#quizzesMade').html(sessionQuizesMade.join(","));
-    $('#avgScore').html(sessionAvgScore);
+    $('#avgScore').html(sessionAvgScore + "%");
 }
 
 $(document).ready(function(){

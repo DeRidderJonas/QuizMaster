@@ -39,6 +39,25 @@ function FillInQuizzes(quizzes) {
     });
 }
 
+function searchForQuizzes() {
+    let searchCriteria = document.getElementById("search").value;
+    console.log("asking server for quizzes with criteria: ", searchCriteria);
+    $.ajax({
+        url : '/searchForQuiz',
+        type: "post",
+        data: {"searchCriteria": searchCriteria}
+    }).done(function (data) {
+        $('#quizzes').html("");
+        FillInQuizzes(JSON.parse(data))
+    }).catch(function (err) {
+        $('#quizzes').prepend("You cannot search for quizzes when offline");
+    })
+}
+
 $(document).ready(function(){
+    if(getParameterByName("mode") === "search"){
+        $('#searchbar').removeClass("hidden");
+        $('#searchButton').on('click', searchForQuizzes);
+    }
     getQuizes();
 });
