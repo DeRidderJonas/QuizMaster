@@ -44,18 +44,25 @@ self.addEventListener('fetch', function (event) { //works offline but doesn't up
     }
 });
 
-/*self.addEventListener('fetch', function (event) { //gives updated files but doesn't work offline
+
+/*
+
+self.addEventListener('fetch', function (event) { //gives updated files but doesn't work offline
     if(!(event.request.url.indexOf('getAnyQuiz') > -1) && !(event.request.url.indexOf('getQuestionsForQuiz') > -1)){
         event.respondWith(
             caches.open('v1').then(function (cache) {
                 return fetch(event.request).then(function (response) {
                     cache.put(event.request, response);
                     return response;
+                }) || caches.match(event.request).then(function (res) {
+                    return res;
                 })
             })
         )
     }
-});*/
+});
+*/
+
 
 self.addEventListener('activate', function (event) {
     console.log("SW activate");
