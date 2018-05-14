@@ -10,7 +10,7 @@ var indexRouter = require('./routes/index');
 
 var app = express();
 
-app.use(h5bp({ root: __dirname + '/public' }));
+//app.use(h5bp({ root: __dirname + '/public' }));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

@@ -1,5 +1,5 @@
 const express = require('express');
-const router = express();
+const router = express.Router();
 const fs = require("fs");
 const Ajv = require("Ajv");
 const ajv = new Ajv();
