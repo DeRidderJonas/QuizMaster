@@ -2,6 +2,5 @@ To fix:
 
 -make manifest and test on phone
 -check Quiz.js is used where needed
--(look for a json db npm)
 -(Security headers) -> send mail to koen
 -css :'(	try out some bootstrap
