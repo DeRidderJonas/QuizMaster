@@ -31,7 +31,7 @@ const JSONSchemaQuiz = {
     },
     "required":["id","title","questions"]
 };
-let validate = ajv.compile(JSONSchemaQuiz);
+const validate = ajv.compile(JSONSchemaQuiz);
 const Quiz = require('./../Shared-javascript/Quiz');
 
 /* GET home page. */
