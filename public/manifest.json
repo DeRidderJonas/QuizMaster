@@ -1,0 +1,16 @@
+{
+  "name": "Quizmaster",
+  "short_name": "Quizmaster",
+  "icons": [
+  	{
+	    "src": "/assets/images/favIcon.png",
+	    "type":  "image/png",
+	    "sizes": "32x32"
+	}
+  ],
+  "theme_color": "#2196f3",
+  "background_color": "#2196f3",
+  "display": "browser",
+  "scope": "http://172.31.15.49:3000/",
+  "start_url": "http://172.31.15.49:3000/"
+}
