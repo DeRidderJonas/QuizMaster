@@ -141,7 +141,15 @@ function readQuizzes() {
     console.log("reading quizzes");
     return new Promise(function (s, f) {
         fs.readFile('routes\\quizzes.json', 'utf-8', function (err, data) {
-            if(err)f(err);
+            if(err){
+                fs.readFile('./quizzes.json', 'utf-8', function (err, data) {
+                    if(err)f(err);
+                    s(JSON.parse(data)
+                        .filter(q=>validate(q))
+                        .map(q=>new Quiz.Quiz(q.id,q.title,q.description,q.questions,q.avgScore,q.amountPlayed))
+                    )
+                })
+            }
             //s(data)
             s(JSON.parse(data)
                 .filter(q=>validate(q))
