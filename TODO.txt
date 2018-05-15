@@ -1,5 +1,6 @@
 To fix:
 
 -make manifest and test on phone
--(Security headers) -> send mail to koen
+-(Security headers) -> on a lonely evening
 -css :'(	try out some bootstrap
+-put site online (it's a big one )': )
