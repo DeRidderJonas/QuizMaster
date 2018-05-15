@@ -6,7 +6,7 @@ const Ajv = require("Ajv");
 const ajv = new Ajv();
 const JSONSchemaQuiz = {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "id":"quizSchema", //TODO change id,
+    "id":"jonas.de.ridder.quizSchema", //TODO change id,
     "title":"Quiz",
     "description":"Quiz",
     "type":"object",
