@@ -1,1 +1,0 @@
-const swRegister = require('./swRegister.js');
