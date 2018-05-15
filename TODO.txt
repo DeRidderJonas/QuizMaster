@@ -1,7 +1,5 @@
 To fix:
 
--make manifest and test on phone -> for now: put local ip:3000 in application url
+-hide addBtn when launched from homescreen
 -(Security headers) -> on a lonely evening
 -css :'(	try out some bootstrap
-
--put site online (it's a big one )': ) 
