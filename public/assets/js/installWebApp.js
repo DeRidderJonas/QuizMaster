@@ -4,16 +4,20 @@ let $btnAdd;
 
 document.addEventListener("DOMContentLoaded", function () {
     $btnAdd = document.getElementById("btnAdd");
+
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+        $btnAdd.style.display = 'none';
+    }
 });
 
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
-    btnAdd.style.display = 'block';
+    $btnAdd.style.display = 'block';
 });
 
 btnAdd.addEventListener('click', (e) => {
-    btnAdd.style.display = 'none';
+    $btnAdd.style.display = 'none';
     deferredPrompt.prompt();
     deferredPrompt.userChoice
         .then((choiceResult) => {

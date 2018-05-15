@@ -19,3 +19,9 @@ img+h1{
     display: none;
   }
 }
+
+@media only screen and (min-width: 700px){
+  #btnAdd{
+    display: none;
+  }
+}
