@@ -3,14 +3,19 @@
   "short_name": "Quizmaster",
   "icons": [
   	{
-	    "src": "/assets/images/favIcon.png",
+	    "src": "/assets/images/favIcon192.png",
 	    "type":  "image/png",
-	    "sizes": "32x32"
-	}
+	    "sizes": "192x192"
+	},
+  {
+      "src": "/assets/images/favIcon512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+  }
   ],
   "theme_color": "#2196f3",
   "background_color": "#2196f3",
   "display": "browser",
-  "scope": "http://172.31.15.49:3000/",
-  "start_url": "http://172.31.15.49:3000/"
+  "scope": "https://polar-tundra-97244.herokuapp.com/",
+  "start_url": "https://polar-tundra-97244.herokuapp.com/index.html?mode=popular"
 }

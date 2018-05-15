@@ -1,5 +1,11 @@
 let deferredPrompt;
 
+let $btnAdd;
+
+document.addEventListener("DOMContentLoaded", function () {
+    $btnAdd = document.getElementById("btnAdd");
+});
+
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
