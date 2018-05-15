@@ -4,4 +4,4 @@ To fix:
 -(Security headers) -> on a lonely evening
 -css :'(	try out some bootstrap
 
--put site online (it's a big one )': )
+-put site online (it's a big one )': ) 
