@@ -142,7 +142,7 @@ function readQuizzes() {
     return new Promise(function (s, f) {
         fs.readFile('routes\\quizzes.json', 'utf-8', function (err, data) {
             if(err){
-                fs.readFile('./quizzes.json', 'utf-8', function (err, data) {
+                fs.readFile('/app/routes/quizzes.json', 'utf-8', function (err, data) {
                     if(err)f(err);
                     s(JSON.parse(data)
                         .filter(q=>validate(q))
