@@ -71,7 +71,9 @@ function fillInOfflineMadeQuizzes() {
 
     while (!db.dbAvailable()) {
     }
-    db.getNewQuizzes().then(quizzes => {
+    db.getNewQuizzes()
+        .then(quizzes => {
+            console.log(quizzes);
         quizzes.forEach(quiz => {
             $('#madeOffline').append(`<h2>${quiz.title}(${quiz.description})</h2>`);
             offlineMadeQuizzes.push(quiz);

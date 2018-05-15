@@ -153,8 +153,12 @@ const db = (function () {
             console.log(os);
             let request = os.getAll();
             request.onsuccess = function (e) {
-                let quizInfo = e.target.result;
-                s(new Quiz(quizInfo.id, quizInfo.title, quizInfo.description, quizInfo.questions, quizInfo.avgScore, quizInfo.amountPlayed));
+                let quizzesInfo = e.target.result;
+                let quizzes = [];
+                quizzesInfo.forEach(q=>
+                    quizzes.push(new Quiz(q.id, q.title, q.description,
+                        q.questions, q.avgScore, q.amountPlayed)));
+                s(quizzes);
             };
             request.onerror = f;
         })
