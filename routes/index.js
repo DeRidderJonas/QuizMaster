@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const fs = require("fs");
-const Ajv = require("Ajv");
+const Ajv = require("ajv");
 const ajv = new Ajv();
 const JSONSchemaQuiz = {
     "$schema": "http://json-schema.org/draft-07/schema#",
