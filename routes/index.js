@@ -147,14 +147,16 @@ function readQuizzes() {
                     s(JSON.parse(data)
                         .filter(q=>validate(q))
                         .map(q=>new Quiz.Quiz(q.id,q.title,q.description,q.questions,q.avgScore,q.amountPlayed))
-                    )
+                    );
                 })
+            }else{
+                //s(data)
+                s(JSON.parse(data)
+                    .filter(q=>validate(q))
+                    .map(q=>new Quiz.Quiz(q.id, q.title, q.description, q.questions, q.avgScore, q.amountPlayed))
+                )
             }
-            //s(data)
-            s(JSON.parse(data)
-                .filter(q=>validate(q))
-                .map(q=>new Quiz.Quiz(q.id, q.title, q.description, q.questions, q.avgScore, q.amountPlayed))
-            )
+
         })
     })
 }
