@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 const express = require('express');
 const router = express.Router();
 const fs = require("fs");
@@ -72,7 +72,7 @@ router.post('/makeQuiz', function (req, res, next) {
     let quiz = new Quiz.Quiz(0,quizObj.title, quizObj.description, quizObj.questions, 0);
     readQuizzes().then(function (quizzesDB) {
         quiz.id = quizzesDB.length;
-        if(validate(quiz)){
+        if(validate(quiz)){ //ik kies ervoor om hier pas de validatie te doen in plaats van voor het lezen van de quizzes zodat de id binnen de eventuele limiet kan blijven
             quizzesDB.push(quiz);
             fs.writeFile('./routes/quizzes.json', JSON.stringify(quizzesDB), function (err) {
                 if(err){console.log(err)}else{
@@ -143,7 +143,10 @@ function readQuizzes() {
         fs.readFile('routes\\quizzes.json', 'utf-8', function (err, data) {
             if(err)f(err);
             //s(data)
-            s(JSON.parse(data).filter(q=>validate(q)))
+            s(JSON.parse(data)
+                .filter(q=>validate(q))
+                .map(q=>new Quiz.Quiz(q.id, q.title, q.description, q.questions, q.avgScore, q.amountPlayed))
+            )
         })
     })
 }

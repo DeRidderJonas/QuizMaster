@@ -1,6 +1,5 @@
 To fix:
 
 -make manifest and test on phone
--check Quiz.js is used where needed
 -(Security headers) -> send mail to koen
 -css :'(	try out some bootstrap

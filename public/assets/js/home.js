@@ -4,7 +4,7 @@ function getQuizes() {
         url: '/getAnyQuizes',
         type: "post"
     }).done(function (data) {
-        data = JSON.parse(data);
+        data = JSON.parse(data).map(q=>new Quiz(q.id, q.title, q.description, q.questions, q.avgScore, q.amountPlayed));
         FillInQuizzes(data);
         stuckCounter = 0;
         while (!db.dbAvailable() && stuckCounter < 1000) {

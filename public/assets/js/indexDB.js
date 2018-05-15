@@ -40,7 +40,8 @@ const db = (function () {
             let os = trans.objectStore(quizName);
             let request = os.get(key);
             request.onsuccess = function (e) {
-                s(e.target.result);
+                let quizInfo = e.target.result;
+                s(new Quiz(quizInfo.id, quizInfo.title, quizInfo.description, quizInfo.questions, quizInfo.avgScore, quizInfo.amountPlayed));
             };
             request.onerror = f;
         })
@@ -152,7 +153,8 @@ const db = (function () {
             console.log(os);
             let request = os.getAll();
             request.onsuccess = function (e) {
-                s(e.target.result);
+                let quizInfo = e.target.result;
+                s(new Quiz(quizInfo.id, quizInfo.title, quizInfo.description, quizInfo.questions, quizInfo.avgScore, quizInfo.amountPlayed));
             };
             request.onerror = f;
         })
