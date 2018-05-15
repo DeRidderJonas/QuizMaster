@@ -33,19 +33,6 @@ self.addEventListener('fetch', function (event) {
     if (event.request.method === "GET") {
         event.respondWith(
             caches.match(event.request).then(function (res) {
-                /*if(res){
-                    fetch(event.request).then(function (response) {
-                        caches.open('v1').then(function (cache) {
-                            cache.put(event.request, response);
-                        })
-                    })
-                }
-                return res || fetch(event.request).then(function (response) {
-                    return caches.open('v1').then(function (cache) {
-                        cache.put(event.request, response.clone());
-                        return response;
-                    })
-                })*/
                 return fetch(event.request).then(function (response) {
                     return caches.open('v1').then(function (cache) {
                         cache.put(event.request, response.clone());

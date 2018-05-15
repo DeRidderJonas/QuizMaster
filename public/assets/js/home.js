@@ -8,7 +8,7 @@ function getQuizes() {
         FillInQuizzes(data);
         stuckCounter = 0;
         while (!db.dbAvailable() && stuckCounter < 1000) {
-            stuckCounter++
+            stuckCounter++ //in case the browser doesn't support indexedDB or it hasn't loaded yet
         }
         if (db.dbAvailable()) {
             db.canAddMoreQuizzes().then(function (roomAvailable) {

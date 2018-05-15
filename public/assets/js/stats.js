@@ -2,7 +2,8 @@ function fillInSessionStats() {
     sessionQuizesMade = (JSON.parse(sessionStorage.getItem("sessionQuizzesMade")) || ["None"]);
     sessionQuizzesDone = (JSON.parse(sessionStorage.getItem("sessionQuizzesDone")) || ["None"]);
     sessionAvgScore = (JSON.parse(sessionStorage.getItem("sessionAvgScore")) || "Not available");
-    console.log(typeof sessionQuizzesDone);
+    console.log(JSON.parse(sessionStorage.getItem("sessionAvgScore")));
+    if(JSON.parse(sessionStorage.getItem("sessionAvgScore")) === 0)sessionAvgScore = 0;
     $('#completedQuizes').html(sessionQuizzesDone.join(","));
     $('#quizzesMade').html(sessionQuizesMade.join(","));
     if(sessionAvgScore !== "Not available")sessionAvgScore += "%";

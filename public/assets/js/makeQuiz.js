@@ -7,7 +7,7 @@ function addQuestion(e) {
     }
     currentAmountOfQuestions++;
     $('input[name=amountOfQuestions]').val(currentAmountOfQuestions);
-    var html = `
+    let html = `
   <fieldset>
     <label for="question${currentAmountOfQuestions}">Question ${currentAmountOfQuestions}</label>
     <input type="text" name="question${currentAmountOfQuestions}" id="question${currentAmountOfQuestions}" class="Titlequestion">
@@ -26,7 +26,7 @@ function addQuestion(e) {
       </article>
     </section>
   </fieldset>
-  `
+  `;
     $('#questions').append(html);
 }
 
