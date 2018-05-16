@@ -9,6 +9,8 @@ const db = (function () {
     }
 
     const maxAmountQuizzesInIndexedDB = 5;
+    let currentAmountOfQuizzesInIndexedDB =0;
+    let currentAmountOfNewQuizzesInIndexedDB = 0;
 
     const quizDB = 'quizDB';
     const quizName = 'quiz';
@@ -28,6 +30,8 @@ const db = (function () {
     request.onsuccess = function (e) {
         console.log('connected to db');
         db = e.target.result;
+        PromiseToCount().then(count=>currentAmountOfQuizzesInIndexedDB=count);
+        PromsiseToCountNewQuizzes().then(count=>currentAmountOfNewQuizzesInIndexedDB=count);
     };
 
     function dbAvailable() {
@@ -35,19 +39,21 @@ const db = (function () {
     }
 
     function promiseToGet(key) {
+        console.log(key);
         return new Promise(function (s, f) {
             let trans = db.transaction([quizName], 'readwrite');
             let os = trans.objectStore(quizName);
             let request = os.get(key);
             request.onsuccess = function (e) {
                 let quizInfo = e.target.result;
-                s(new Quiz(quizInfo.id, quizInfo.title, quizInfo.description, quizInfo.questions, quizInfo.avgScore, quizInfo.amountPlayed));
+                s(new Quiz(quizInfo.id, quizInfo.title, quizInfo.description,
+                    quizInfo.questions, quizInfo.avgScore, quizInfo.amountPlayed))
             };
             request.onerror = f;
         })
     }
 
-    function promiseToCount() {
+    function PromiseToCount() {
         return new Promise(function (s, f) {
             let trans = db.transaction(quizName);
             let os = trans.objectStore(quizName);
@@ -63,7 +69,9 @@ const db = (function () {
         try {
             let trans = db.transaction([quizName], 'readwrite');
             let os = trans.objectStore(quizName);
+            newQuiz.id = currentAmountOfQuizzesInIndexedDB;
             os.add(newQuiz);
+            currentAmountOfQuizzesInIndexedDB++
         } catch (err) {
             console.error(err);
         }
@@ -104,31 +112,30 @@ const db = (function () {
 
     function range(amount) {
         let numbers = [];
-        for (let i = 0; i < amount + 1; i++) {
+        for (let i = 0; i < amount; i++) {
             numbers.push(i);
         }
         return numbers;
     }
 
     function getMultipleQuizzes() {
-        return Promise.all(range(maxAmountQuizzesInIndexedDB).map(getQuiz));
+        return PromiseToCount().then(function (count) {
+            return Promise.all(range(count).map(getQuiz));
+        });
     }
 
     function canAddMoreQuizzes() {
-        return promiseToCount().then(function (amount) {
-            return amount < maxAmountQuizzesInIndexedDB;
-        });
+        return currentAmountOfQuizzesInIndexedDB < maxAmountQuizzesInIndexedDB;
     }
 
     function newQuiz(newQuiz) {
         try {
             console.log("adding new quiz to 'cache'", newQuiz);
-            PromsiseToCountNewQuizzes().then(amount => {
-                newQuiz.id = amount;
-                let trans = db.transaction([makeQuiz], 'readwrite');
-                let os = trans.objectStore(makeQuiz);
-                os.add(newQuiz);
-            })
+            newQuiz.id = currentAmountOfNewQuizzesInIndexedDB;
+            let trans = db.transaction([makeQuiz], 'readwrite');
+            let os = trans.objectStore(makeQuiz);
+            os.add(newQuiz);
+            currentAmountOfNewQuizzesInIndexedDB++;
         } catch (err) {
             console.error(err);
         }
@@ -150,7 +157,6 @@ const db = (function () {
         return new Promise(function (s, f) {
             let trans = db.transaction([makeQuiz], 'readwrite');
             let os = trans.objectStore(makeQuiz);
-            console.log(os);
             let request = os.getAll();
             request.onsuccess = function (e) {
                 let quizzesInfo = e.target.result;
