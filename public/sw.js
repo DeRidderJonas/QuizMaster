@@ -22,7 +22,8 @@ self.addEventListener('install', function (event) {
                 'index.html',
                 'makeQuiz.html',
                 'quiz.html',
-                'stats.html'
+                'stats.html',
+                'manifest.json'
             ])
         })
     )
