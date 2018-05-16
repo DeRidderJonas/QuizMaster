@@ -34,6 +34,8 @@ const JSONSchemaQuiz = {
 };
 const validate = ajv.compile(JSONSchemaQuiz);
 const Quiz = require('./../Shared-javascript/Quiz');
+const localPathToJSON = "./routes/quizzes.json";
+const serverPathToJSON = "/app/routes/quizzes.json";
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -70,18 +72,7 @@ router.post('/makeQuiz', function (req, res, next) {
     let quizJson = req.body.quiz;
     let quizObj = JSON.parse(quizJson);
     let quiz = new Quiz.Quiz(0,quizObj.title, quizObj.description, quizObj.questions, 0);
-    readQuizzes().then(function (quizzesDB) {
-        quiz.id = quizzesDB.length;
-        if(validate(quiz)){ //ik kies ervoor om hier pas de validatie te doen in plaats van voor het lezen van de quizzes zodat de id binnen de eventuele limiet kan blijven
-            quizzesDB.push(quiz);
-            fs.writeFile('./routes/quizzes.json', JSON.stringify(quizzesDB), function (err) {
-                if(err){console.log(err)}else{
-                    console.log("successfully made quiz: ", quiz.title);
-                    res.send(JSON.stringify({"status": "OK"}));
-                }
-            })
-        }
-    }).catch(err=>console.error(err))
+    insertQuiz(quiz, res);
 });
 
 router.post('/getQuestionsForQuiz', function (req, res) {
@@ -140,9 +131,9 @@ router.post('/handleAnswers', function (req, res) {
 function readQuizzes() {
     console.log("reading quizzes");
     return new Promise(function (s, f) {
-        fs.readFile('routes\\quizzes.json', 'utf-8', function (err, data) {
+        fs.readFile(localPathToJSON, 'utf-8', function (err, data) {
             if(err){
-                fs.readFile('/app/routes/quizzes.json', 'utf-8', function (err, data) {
+                fs.readFile(serverPathToJSON, 'utf-8', function (err, data) {
                     if(err)f(err);
                     s(JSON.parse(data)
                         .filter(q=>validate(q))
@@ -161,9 +152,25 @@ function readQuizzes() {
     })
 }
 
-function getQuizById(quizID) {
-    return readQuizzes().then(quizzes => quizzes.filter(q=>q.id == quizID)[0])
-        .catch(err=>console.error(err))
+function insertQuiz(quiz, res) {
+    readQuizzes().then(function (quizzesDB) {
+        quiz.id = quizzesDB.length;
+        if(validate(quiz)){ //ik kies ervoor om hier pas de validatie te doen in plaats van voor het lezen van de quizzes zodat de id binnen de eventuele limiet kan blijven
+            quizzesDB.push(quiz);
+            fs.writeFile(localPathToJSON, JSON.stringify(quizzesDB), function (err) {
+                if(err){
+                    fs.writeFile(serverPathToJSON, JSON.stringify(quizzesDB), function (err) {
+                        if(err)console.log(err);
+                        res.send(JSON.stringify({"status":"OK"}));
+                    })
+
+                } else{
+                    console.log("successfully made quiz: ", quiz.title);
+                    res.send(JSON.stringify({"status": "OK"}));
+                }
+            })
+        }
+    }).catch(err=>console.error(err))
 }
 
 function updateQuiz(quizID, fields, newValues) {
@@ -172,10 +179,20 @@ function updateQuiz(quizID, fields, newValues) {
             for(let i=0;i<fields.length;i++){
                 quizzesDB[quizID][fields[i]] = newValues[i];
             }
-            fs.writeFile('.\\routes\\quizzes.json', JSON.stringify(quizzesDB), function (err) {
-                if(err)console.log("updating",err);
+            fs.writeFile(localPathToJSON, JSON.stringify(quizzesDB), function (err) {
+                if(err){
+                    console.log(err);
+                    fs.writeFile(serverPathToJSON, JSON.stringify(quizzesDB), function (err) {
+                        if(err)console.log(err);
+                    })
+                }
             })
         })
+        .catch(err=>console.error(err))
+}
+
+function getQuizById(quizID) {
+    return readQuizzes().then(quizzes => quizzes.filter(q=>q.id == quizID)[0])
         .catch(err=>console.error(err))
 }
 

@@ -96,6 +96,7 @@ function pushOfflineMade() {
             console.log(data);
             if (data.status === "OK") {
                 db.removeNewQuizzes();
+                $('#madeOffline').html("");
             }
         }).catch(function (err) {
             console.log(err);
