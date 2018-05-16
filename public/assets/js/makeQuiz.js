@@ -47,13 +47,11 @@ function handleSubmit(e) {
         "description": document.getElementById("quizDesc").value,
         "questions": questions
     };
-    console.log(JSON.stringify(quiz));
     $.ajax({
         url: '/makeQuiz',
         data: {"quiz": JSON.stringify(quiz)},
         type: "post"
     }).done(function (data) {
-        console.log(data);
         if (JSON.parse(data).status === "OK") $('#info').html("Your quiz was successfully added.")
     }).catch(function (err) {
         console.log(err);
@@ -73,11 +71,9 @@ function fillInOfflineMadeQuizzes() {
     }
     db.getNewQuizzes()
         .then(quizzes => {
-            console.log(quizzes);
         quizzes.forEach(quiz => {
             $('#madeOffline').append(`<h2>${quiz.title}(${quiz.description})</h2>`);
             offlineMadeQuizzes.push(quiz);
-            console.log(quiz);
         });
         $('#madeOffline').append("<button class=\"pushOfflineMade\">Send quizzes to server!</button>")
     });
@@ -93,7 +89,6 @@ function pushOfflineMade() {
             type: "post"
         }).done(function (data) {
             data = JSON.parse(data);
-            console.log(data);
             if (data.status === "OK") {
                 db.removeNewQuizzes();
                 $('#madeOffline').html("");

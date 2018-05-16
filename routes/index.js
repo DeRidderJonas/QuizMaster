@@ -43,7 +43,6 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/getAnyQuizes', function (req, res) {
-    console.log("get any quizes");
     readQuizzes()
         .then(function (quizzesDB) {
             let quizIDs = [];
@@ -62,7 +61,6 @@ router.post('/getAnyQuizes', function (req, res) {
 
 router.post('/searchForQuiz', function (req, res) {
     let criteria = req.body.searchCriteria;
-    console.log("searching for quizzes with criteria: ", criteria);
     readQuizzes()
         .then(quizzes => quizzes.filter(q=>q.title.indexOf(criteria) > -1))
         .then(quizzes => res.json(JSON.stringify(quizzes)));
@@ -129,7 +127,6 @@ router.post('/handleAnswers', function (req, res) {
 });
 
 function readQuizzes() {
-    console.log("reading quizzes");
     return new Promise(function (s, f) {
         fs.readFile(localPathToJSON, 'utf-8', function (err, data) {
             if(err){
@@ -160,7 +157,7 @@ function insertQuiz(quiz, res) {
             fs.writeFile(localPathToJSON, JSON.stringify(quizzesDB), function (err) {
                 if(err){
                     fs.writeFile(serverPathToJSON, JSON.stringify(quizzesDB), function (err) {
-                        if(err)console.log(err);
+                        if(err)console.error(err);
                         res.send(JSON.stringify({"status":"OK"}));
                     })
 
@@ -181,9 +178,9 @@ function updateQuiz(quizID, fields, newValues) {
             }
             fs.writeFile(localPathToJSON, JSON.stringify(quizzesDB), function (err) {
                 if(err){
-                    console.log(err);
+                    console.error(err);
                     fs.writeFile(serverPathToJSON, JSON.stringify(quizzesDB), function (err) {
-                        if(err)console.log(err);
+                        if(err)console.error(err);
                     })
                 }
             })
