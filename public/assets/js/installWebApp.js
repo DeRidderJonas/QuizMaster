@@ -5,9 +5,9 @@ let $btnAdd;
 document.addEventListener("DOMContentLoaded", function () {
     $btnAdd = document.getElementById("btnAdd");
 
-    if (window.matchMedia('(display-mode: standalone)').matches) {
+    /*if (window.matchMedia('(display-mode: browser)').matches) {
         $btnAdd.style.display = 'none';
-    }
+    }*/
 });
 
 window.addEventListener('beforeinstallprompt', (e) => {

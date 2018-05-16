@@ -14,7 +14,7 @@ img+h1{
   height: 3vw;
 }
 
-@media all and (display-mode: standalone) {
+@media all and (display-mode: browser) {
   #btnAdd{
     display: none;
   }
