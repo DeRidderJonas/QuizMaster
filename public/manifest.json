@@ -16,6 +16,6 @@
   "theme_color": "#2196f3",
   "background_color": "#2196f3",
   "display": "browser",
-  "scope": "https://polar-tundra-97244.herokuapp.com/",
-  "start_url": "https://polar-tundra-97244.herokuapp.com/index.html?mode=popular"
+  "scope": "https://de-ridder-jonas-quizmaster.herokuapp.com/",
+  "start_url": "https://de-ridder-jonas-quizmaster.herokuapp.com/index.html?mode=popular"
 }
