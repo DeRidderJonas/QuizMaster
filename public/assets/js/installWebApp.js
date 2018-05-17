@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
+    console.log("beforeinstallprompt", e);
     deferredPrompt = e;
     $btnAdd.style.display = 'block';
 });
