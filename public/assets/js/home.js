@@ -31,7 +31,7 @@ function FillInQuizzes(quizzes) {
             let html = `<section class="quiz">
                       <h1>${quiz.title}</h1>
                       <p>${quiz.description}</p>
-                      <a href="quiz.html?quiz=${quiz.id}" class="continue"><img src="assets/images/arrow.png"></a>
+                      <a href="quiz.html?quiz=${quiz.id}" class="continue"><img src="assets/images/arrow.png" alt="continue arrow" title="continue arrow"></a>
                     </section>`;
             $('#quizzes').append(html);
         }
