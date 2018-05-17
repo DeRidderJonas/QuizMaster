@@ -37,6 +37,10 @@ const Quiz = require('./../Shared-javascript/Quiz');
 const localPathToJSON = "./routes/quizzes.json";
 const serverPathToJSON = "/app/routes/quizzes.json";
 
+router.get('*', function (req,res) {
+  res.redirect('https://' + req.headers.host + req.url);
+})
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index');
