@@ -1,5 +1,4 @@
 To fix:
 
--hide addBtn when launched from homescreen
 -(Security headers) -> on a lonely evening
 -css :'(	try out some bootstrap
