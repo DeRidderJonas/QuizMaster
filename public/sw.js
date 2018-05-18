@@ -25,7 +25,7 @@ self.addEventListener('install', function (event) {
                 'stats.html',
                 'manifest.json'
             ])
-        })
+        }).catch(err=>{})
     )
 });
 
@@ -43,7 +43,7 @@ self.addEventListener('fetch', function (event) {
                     if (err) console.log(err);
                     return res;
                 })
-            })
+            }).catch(err=>{})
         )
     }
 });
@@ -58,6 +58,6 @@ self.addEventListener('activate', function (event) {
                     return caches.delete(key);
                 }
             }))
-        })
+        }).catch(err=>{})
     )
 });
