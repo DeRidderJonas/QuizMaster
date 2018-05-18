@@ -57,6 +57,8 @@ function handleSubmit(e) {
         console.log(err);
         if (db.dbAvailable()) {
             db.newQuiz(quiz);
+            $('#info').html("No connection to the server, try again later... (don't worry, your quiz was stored)");
+            fillInOfflineMadeQuizzes();
         }
     });
     let sessionQuizzesMade = JSON.parse(sessionStorage.getItem("sessionQuizzesMade")) || [];
