@@ -14,11 +14,11 @@ img+h1{
   height: 3vw;
 }
 
-/* @media all and (display-mode: browser) {
+@media all and (display-mode: standalone) {
   #btnAdd{
     display: none;
   }
-} */
+}
 
 /* @media only screen and (min-width: 700px){
   #btnAdd{
