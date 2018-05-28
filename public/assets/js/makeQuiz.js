@@ -76,9 +76,9 @@ function fillInOfflineMadeQuizzes() {
         quizzes.forEach(quiz => {
             $('#madeOffline').append(`<h2>${quiz.title}(${quiz.description})</h2>`);
             offlineMadeQuizzes.push(quiz);
-        }).catch();
+        });
         $('#madeOffline').append("<button class=\"pushOfflineMade\">Send quizzes to server!</button>")
-    });
+    }).catch();
 
 }
 
