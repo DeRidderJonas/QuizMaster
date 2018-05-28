@@ -29,7 +29,7 @@ btnAdd.addEventListener('click', (e) => {
                   console.log('User dismissed the A2HS prompt');
               }
               deferredPrompt = null;
-          });
+          }).catch();
     }
 });
 

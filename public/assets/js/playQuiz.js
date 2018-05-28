@@ -66,7 +66,7 @@ function getQuestions(quizID) {
                 .then(qs => questions = qs)
                 .then(_ => fillInNewQuestion(questions[currentQuestion]))
                 .catch(err => console.error(err));
-            db.getQuizTitle(quizID).then(title => quizTitle = title);
+            db.getQuizTitle(quizID).then(title => quizTitle = title).catch();
             $('#quizTitle').html(quizTitle);
         } else {
             $('#question').html("Something went wrong, try again later...")
@@ -79,4 +79,3 @@ $(document).ready(function () {
     getQuestions(quizID);
     $('input[type=button]').on('click', handleFormSubmit);
 });
-

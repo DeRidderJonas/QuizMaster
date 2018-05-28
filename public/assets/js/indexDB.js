@@ -30,8 +30,8 @@ const db = (function () {
     request.onsuccess = function (e) {
         console.log('connected to db');
         db = e.target.result;
-        PromiseToCount().then(count=>currentAmountOfQuizzesInIndexedDB=count);
-        PromsiseToCountNewQuizzes().then(count=>currentAmountOfNewQuizzesInIndexedDB=count);
+        PromiseToCount().then(count=>currentAmountOfQuizzesInIndexedDB=count).catch();
+        PromsiseToCountNewQuizzes().then(count=>currentAmountOfNewQuizzesInIndexedDB=count).catch();
     };
 
     function dbAvailable() {
@@ -86,7 +86,7 @@ const db = (function () {
 
     function getQuestionsForQuiz(id) {
         return getQuiz(id).then(q => q.questions)
-            .then(shuffleQuestions)
+            .then(shuffleQuestions).catch()
     }
 
     function shuffleQuestions(questions) {
@@ -121,7 +121,7 @@ const db = (function () {
     function getMultipleQuizzes() {
         return PromiseToCount().then(function (count) {
             return Promise.all(range(count).map(getQuiz));
-        });
+        }).catch();
     }
 
     function canAddMoreQuizzes() {
@@ -182,7 +182,7 @@ const db = (function () {
 
     function PromiseToGetQuizTitle(quizID) {
         return promiseToGet(quizID)
-            .then(q => q.title)
+            .then(q => q.title).catch()
     }
 
     return {
