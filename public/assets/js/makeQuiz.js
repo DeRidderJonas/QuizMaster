@@ -78,7 +78,7 @@ function fillInOfflineMadeQuizzes() {
             offlineMadeQuizzes.push(quiz);
         });
         $('#madeOffline').append("<button class=\"pushOfflineMade\">Send quizzes to server!</button>")
-    }).catch();
+    }).catch(); 
 
 }
 
