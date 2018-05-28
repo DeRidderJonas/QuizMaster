@@ -1,4 +1,3 @@
 To fix:
 
--(Security headers) -> on a lonely evening
--css :'(	try out some bootstrap
+Nothing
